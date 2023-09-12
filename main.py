@@ -5,6 +5,8 @@ print('iae!')
 
 screen = pg.display.set_mode((1600,800))
 
+print("oi")
+
 frame_count = 0
 
 while True:
