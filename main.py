@@ -6,6 +6,7 @@ print('iae, mermãozão!')
 screen = pg.display.set_mode((1600,800))
 
 print("oi")
+print("abcde")
 
 frame_count = 0
 
