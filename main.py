@@ -1,7 +1,11 @@
 import pygame as pg
 from functions import update_screen
 
+print('iae, mermãozão!')
+
 screen = pg.display.set_mode((1600,800))
+
+print("oi")
 
 frame_count = 0
 
