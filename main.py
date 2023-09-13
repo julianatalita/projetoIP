@@ -4,7 +4,7 @@ from objects import Player
 
 screen = pg.display.set_mode((800,800))
 clock = pg.time.Clock()
-carangueijo = Player(400, 650, 111, 111, 4)
+caranguejo = Player(400, 650, 111, 111, 4)
 frame_count = 0
 
 fundo = pg.image.load('graphics/swamp.png')
@@ -32,14 +32,15 @@ while rodando:
     # Mudar a velocidade do jogo a cade 3 segundos
     if frame_count % 180 == 0:
         speed_game += 1
-        carangueijo.speed_obj = int(speed_game*1.2)
+        caranguejo.speed_obj = int(speed_game*1.2)
 
     # Aumentar o spawnrate a cada meio segundo
     if frame_count % 30 == 0 and dificuldade > 30:
         dificuldade += 1
         print(dificuldade)
 
-    carangueijo.move()
+    keys = pg.key.get_pressed()
+    caranguejo.move(keys)
 
     # draw nas surfaces
     screen.blit(fundo, (0,0))
@@ -47,14 +48,14 @@ while rodando:
     # desenhar apenas os lixos que não forem tocados
 
     for item in onscreen:
-        if collision(carangueijo, item[1]) or collision(item[1],carangueijo):
+        if collision(caranguejo, item[1]) or collision(item[1],caranguejo):
             onscreen.remove(item)
         else:
             screen.blit(item[0], (item[1].x, item[1].y))
             item[1].pos_y += item[1].speed
 
 
-    screen.blit(crab, (carangueijo.x, carangueijo.y))
+    screen.blit(crab, (caranguejo.x, caranguejo.y))
     
     # Update na tela (duh)
 

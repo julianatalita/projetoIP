@@ -12,6 +12,7 @@ class Lixo:
         self.size_y = size_y
         self.id = id
         self.speed_obj = speed_obj
+    
     @property
     def x(self):
         return self.pos_x
@@ -71,12 +72,8 @@ class Player:
     def speed(self):
         return self.speed_obj
 
-    def move(self):
-
-        keys = pg.key.get_pressed()
-        
-        if keys[pg.K_a]:
-            self.pos_x -= self.speed
-
-        if keys[pg.K_d]:
+    def move(self, direcao):
+        if direcao[pg.K_d]:
             self.pos_x += self.speed
+        if direcao[pg.K_a]:
+            self.pos_x -= self.speed
