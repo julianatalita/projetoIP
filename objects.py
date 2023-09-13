@@ -9,7 +9,7 @@ class Lixo:
         self.size_x = size_x
         self.size_y = size_y
         self.id = id
-
+        
     @property
     def x(self):
         return self.pos_x

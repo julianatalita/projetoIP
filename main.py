@@ -4,7 +4,7 @@ from objects import Player
 
 screen = pg.display.set_mode((1600,800))
 clock = pg.time.Clock()
-carangueijo = Player(800, 400, 100, 100)
+carangueijo = Player(800, 400, 111, 111)
 frame_count = 0
 
 fundo = pg.image.load('graphics/swamp.png')
@@ -12,12 +12,14 @@ crab = pg.image.load('graphics/crab.png')
 
 onscreen = []
 
-while True:
+rodando = True
+while rodando:
 
     # Sair do jogo ao fechar a janela
     for event in pg.event.get():
         if event.type == pg.QUIT:
             pg.quit()
+            rodando = False
             exit()
 
     # Spawnar um lixo a cada 2 segundos (120 frames)
