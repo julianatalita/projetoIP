@@ -1,5 +1,5 @@
 import pygame as pg
-from functions import spawn_lixo, collision
+from functions import spawn_lixo
 from objects import Player
 
 screen = pg.display.set_mode((800,800))
@@ -10,6 +10,7 @@ frame_count = 0
 fundo = pg.image.load('graphics/swamp.png')
 crab = pg.image.load('graphics/crab.png')
 
+hitboxes = []
 onscreen = []
 dificuldade = 1
 speed_game = 4
@@ -48,7 +49,8 @@ while rodando:
     # desenhar apenas os lixos que não forem tocados
 
     for item in onscreen:
-        if collision(caranguejo, item[1]) or collision(item[1],caranguejo):
+        item_rec = item[0].get_rect(topleft = (item[1].x, item[1].y))
+        if crab.get_rect(topleft = (caranguejo.x, caranguejo.y)).colliderect(item_rec):
             onscreen.remove(item)
         else:
             screen.blit(item[0], (item[1].x, item[1].y))

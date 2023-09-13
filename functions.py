@@ -2,14 +2,6 @@ import pygame as pg
 from random import randint
 from objects import Lixo
 
-def collision(player, trash):
-    #cada objeto tem uma posição e um tamanho, se eles estiverem colidindo, algum vai estar "entre" as cordenadas dos 2
-    #vamos ainda estudar sobre o método de colisão do pygame com a função rect
-    if (trash.x < player.x < trash.x + trash.sizex) and (trash.y < player.y < trash.y + trash.sizey):
-        return True
-    else:
-        return False
-
 def spawn_lixo(frame, speed):
 
     width, height = pg.display.get_window_size()
