@@ -10,8 +10,8 @@ frame_count = 0
 fundo = pg.image.load('graphics/swamp.png')
 crab = pg.image.load('graphics/crab.png')
 
-hitboxes = []
 onscreen = []
+contador = {'pitu': 0, 'garrafa': 0, 'pneu': 0}
 dificuldade = 1
 speed_game = 4
 rodando = True
@@ -51,6 +51,14 @@ while rodando:
     for item in onscreen:
         item_rec = item[0].get_rect(topleft = (item[1].x, item[1].y))
         if crab.get_rect(topleft = (caranguejo.x, caranguejo.y)).colliderect(item_rec):
+            if item[1].sprite_id == 0:
+                contador['pitu'] += 1
+            elif item[1].sprite_id == 1:
+                contador['garrafa'] += 1
+            else:
+                contador['pneu'] += 1
+            
+            print(contador)
             onscreen.remove(item)
         else:
             screen.blit(item[0], (item[1].x, item[1].y))

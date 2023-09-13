@@ -40,6 +40,7 @@ class Lixo:
     @property
     def speed(self):
         return self.speed_obj
+    
 
 class Player:
 
