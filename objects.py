@@ -4,10 +4,9 @@ class Lixo:
 
     # Iniciar com x, y, frame que a sacola foi gerada, largura do sprite, altura do sprite, id (ignorar por enquanto, é pra ser uma spritesheet dps)
 
-    def __init__(self, pos_x, pos_y, frame_start, id, speed_obj):
+    def __init__(self, pos_x, pos_y, id, speed_obj):
         self.pos_x = pos_x
         self.pos_y = pos_y
-        self.frame_start = frame_start
         self.id = id
         self.speed_obj = speed_obj
     
@@ -18,10 +17,6 @@ class Lixo:
     @property
     def y(self):
         return self.pos_y
-    
-    @property
-    def startframe(self):
-        return self.frame_start
     
     @property
     def sprite_id(self):

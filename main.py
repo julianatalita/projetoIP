@@ -27,7 +27,7 @@ while rodando:
 
     # Spawnar um lixo a cada 2 segundos (120 frames)
     if frame_count % 60-dificuldade == 0:
-        lixo_novo = spawn_lixo(frame_count, speed_game)
+        lixo_novo = spawn_lixo(speed_game)
         onscreen.append(lixo_novo)
 
     # Mudar a velocidade do jogo a cade 3 segundos
