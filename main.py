@@ -1,16 +1,7 @@
 import pygame as pg
 from functions import update_screen
 
-print('iae, mermãozão!')
-
 screen = pg.display.set_mode((1600,800))
-
-print("oi")
-print("abcde")
-#comentario
-#chico se tu me quiseres
-frame_count = 0
-print('to feliz')
 
 while True:
 
