@@ -1,6 +1,7 @@
 import pygame as pg
 from random import randint
 from objects import Lixo
+from sprite_sheet import sprite_sheet
 
 def spawn_lixo(frame, speed):
 
@@ -15,6 +16,6 @@ def spawn_lixo(frame, speed):
 
     # pra não ficar um módulo circular, é melhor dar blit(return[0], return[1])
 
-    return [pg.image.load('graphics/sacola.png'), obj]
+    return [sprite_sheet[obj.sprite_id], obj]
 
 
