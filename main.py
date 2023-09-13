@@ -37,7 +37,7 @@ while True:
             onscreen.remove(item)
         else:
             screen.blit(item[0], (item[1].x(), item[1].y()))
-    
+            
     screen.blit(crab, (carangueijo.x(), carangueijo.y()))
     
     # Update na tela (duh)
