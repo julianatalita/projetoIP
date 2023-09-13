@@ -15,6 +15,7 @@ contador = {'pitu': 0, 'garrafa': 0, 'pneu': 0}
 dificuldade = 1
 speed_game = 4
 rodando = True
+angle = 0
 
 while rodando:
 
@@ -49,6 +50,12 @@ while rodando:
     # desenhar apenas os lixos que não forem tocados
 
     for item in onscreen:
+        
+        # mudar o angulo de pouco em pouco
+        if frame_count % 3 == 0:
+            angle += 1
+
+        
         item_rec = item[0].get_rect(topleft = (item[1].x, item[1].y))
         if crab.get_rect(topleft = (caranguejo.x, caranguejo.y)).colliderect(item_rec):
             if item[1].sprite_id == 0:
@@ -61,7 +68,10 @@ while rodando:
             print(contador)
             onscreen.remove(item)
         else:
-            screen.blit(item[0], (item[1].x, item[1].y))
+            
+            # troquei image[0] pela função que roda image[0] por um angle
+
+            screen.blit(pg.transform.rotate(item[0], angle), (item[1].x, item[1].y))
             item[1].pos_y += item[1].speed
 
 
