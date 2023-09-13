@@ -4,7 +4,7 @@ from objects import Player
 
 screen = pg.display.set_mode((800,800))
 clock = pg.time.Clock()
-caranguejo = Player(400, 650, 111, 111, 4)
+caranguejo = Player(400, 650, 4)
 frame_count = 0
 
 fundo = pg.image.load('graphics/swamp.png')
