@@ -10,31 +10,19 @@ def collision(player,trash):
     else:
         return False
 
-def spawn_lixo(frame):
+def spawn_lixo(frame, speed):
 
     width, height = pg.display.get_window_size()
     randint_x = randint(0,width)
-    randint_y = randint(0,height)
+    randint_y = randint(0,height/8)
 
     # a próxima linha inicia um lixo em uma posição aleatória no frame que é fornecido à função (usado para saber se é pra renderizar o lixo ou não)
     # 122,177,0 é por que ainda só tem 1 tipo de lixo
 
-    obj = Lixo(randint_x, randint_y, frame, 122, 177, 0)
+    obj = Lixo(randint_x, randint_y, frame, 122, 177, 0, int(randint(int(speed/2),speed)+speed/2))
 
     # pra não ficar um módulo circular, é melhor dar blit(return[0], return[1])
 
-    return (pg.image.load('graphics/sacola.png'), obj)
+    return [pg.image.load('graphics/sacola.png'), obj]
 
-def move(x, y):
-    keys = pg.key.get_pressed()
 
-    if keys[pg.K_w]:
-        y -= 3
-    if keys[pg.K_a]:
-        x -= 3
-    if keys[pg.K_s]:
-        y += 3
-    if keys[pg.K_d]:
-        x += 3
-    
-    return (x,y)

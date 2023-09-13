@@ -1,18 +1,20 @@
 import pygame as pg
-from functions import spawn_lixo, move, collision
+from functions import spawn_lixo, collision
 from objects import Player
 
-screen = pg.display.set_mode((1600,800))
+screen = pg.display.set_mode((800,800))
 clock = pg.time.Clock()
-carangueijo = Player(800, 400, 111, 111)
+carangueijo = Player(400, 650, 111, 111, 4)
 frame_count = 0
 
 fundo = pg.image.load('graphics/swamp.png')
 crab = pg.image.load('graphics/crab.png')
 
 onscreen = []
-
+dificuldade = 1
+speed_game = 4
 rodando = True
+
 while rodando:
 
     # Sair do jogo ao fechar a janela
@@ -23,11 +25,21 @@ while rodando:
             exit()
 
     # Spawnar um lixo a cada 2 segundos (120 frames)
-    if frame_count % 120 == 0:
-        lixo_novo = spawn_lixo(frame_count)
+    if frame_count % 60-dificuldade == 0:
+        lixo_novo = spawn_lixo(frame_count, speed_game)
         onscreen.append(lixo_novo)
 
-    carangueijo.pos_x, carangueijo.pos_y = move(carangueijo.x, carangueijo.y)
+    # Mudar a velocidade do jogo a cade 3 segundos
+    if frame_count % 180 == 0:
+        speed_game += 1
+        carangueijo.speed_obj = int(speed_game*1.2)
+
+    # Aumentar o spawnrate a cada meio segundo
+    if frame_count % 30 == 0 and dificuldade > 30:
+        dificuldade += 1
+        print(dificuldade)
+
+    carangueijo.move()
 
     # draw nas surfaces
     screen.blit(fundo, (0,0))
@@ -39,7 +51,9 @@ while rodando:
             onscreen.remove(item)
         else:
             screen.blit(item[0], (item[1].x, item[1].y))
-            
+            item[1].pos_y += item[1].speed
+
+
     screen.blit(crab, (carangueijo.x, carangueijo.y))
     
     # Update na tela (duh)
@@ -49,5 +63,5 @@ while rodando:
     # Contar os frames e rodar a 60FPS
 
     frame_count += 1
-    print(frame_count)
+
     clock.tick(60)
