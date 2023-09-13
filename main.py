@@ -10,6 +10,7 @@ frame_count = 0
 fundo = pg.image.load('graphics/swamp.png')
 crab = pg.image.load('graphics/crab.png')
 
+removidos = []
 onscreen = []
 contador = {'pitu': 0, 'garrafa': 0, 'pneu': 0}
 dificuldade = 1
@@ -26,21 +27,29 @@ while rodando:
             rodando = False
             exit()
 
-    # Spawnar um lixo a cada 2 segundos (120 frames)
+    # Spawnar um lixo
     if frame_count % 60-dificuldade == 0:
         lixo_novo = spawn_lixo(speed_game)
         onscreen.append(lixo_novo)
+        
+        if dificuldade > 30:
+            lixo_novo = spawn_lixo(int(speed_game/2))
+            onscreen.append(lixo_novo)
 
     # Mudar a velocidade do jogo a cade 3 segundos
     if frame_count % 180 == 0:
         speed_game += 1
         caranguejo.speed_obj = int(speed_game*1.2)
 
-    # Aumentar o spawnrate a cada meio segundo
-    if frame_count % 30 == 0 and dificuldade > 30:
-        dificuldade += 1
-        print(dificuldade)
+    # Aumentar o spawnrate a cada segundo
+    if frame_count % 60 == 0:
+        if dificuldade < 30:
+            dificuldade += 1
+        else:
+            if frame_count % 60 == 0 and 60-dificuldade > 15:
+                dificuldade += 1 
 
+    
     keys = pg.key.get_pressed()
     caranguejo.move(keys)
 
@@ -49,12 +58,16 @@ while rodando:
 
     # desenhar apenas os lixos que não forem tocados
 
+    removidos = []
+
     for item in onscreen:
         
         # mudar o angulo de pouco em pouco
         if frame_count % 3 == 0:
             angle += 1
-
+        
+        if item[1].y > screen.get_height():
+            removidos.append(onscreen.index(item))
         
         item_rec = item[0].get_rect(topleft = (item[1].x, item[1].y))
         if crab.get_rect(topleft = (caranguejo.x, caranguejo.y)).colliderect(item_rec):
@@ -66,7 +79,8 @@ while rodando:
                 contador['pneu'] += 1
             
             print(contador)
-            onscreen.remove(item)
+            removidos.append(onscreen.index(item))
+        
         else:
             
             # troquei image[0] pela função que roda image[0] por um angle
@@ -81,6 +95,9 @@ while rodando:
 
     pg.display.update()
 
+    for i in removidos:
+        onscreen.pop(i)
+        removidos.remove(i)    
     # Contar os frames e rodar a 60FPS
 
     frame_count += 1
