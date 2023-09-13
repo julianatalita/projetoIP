@@ -10,16 +10,27 @@ class Lixo:
         self.size_y = size_y
         self.id = id
 
+    @property
     def x(self):
         return self.pos_x
+    
+    @property
     def y(self):
         return self.pos_y
+    
+    @property
     def startframe(self):
         return self.frame_start
+    
+    @property
     def sizex(self):
         return self.size_x
+    
+    @property
     def sizey(self):
         return self.size_y
+    
+    @property
     def sprite_id(self):
         return self.id
 
@@ -33,11 +44,18 @@ class Player:
         self.size_x = size_x
         self.size_y = size_y
     
+    @property
     def x(self):
         return self.pos_x
+    
+    @property
     def y(self):
         return self.pos_y
+    
+    @property
     def sizex(self):
         return self.size_x
+    
+    @property
     def sizey(self):
         return self.size_y

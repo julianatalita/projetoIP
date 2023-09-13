@@ -25,7 +25,7 @@ while True:
         lixo_novo = spawn_lixo(frame_count)
         onscreen.append(lixo_novo)
 
-    carangueijo.pos_x, carangueijo.pos_y = move(carangueijo.x(), carangueijo.y())
+    carangueijo.pos_x, carangueijo.pos_y = move(carangueijo.x, carangueijo.y)
 
     # draw nas surfaces
     screen.blit(fundo, (0,0))
@@ -36,9 +36,9 @@ while True:
         if collision(carangueijo, item[1]) or collision(item[1],carangueijo):
             onscreen.remove(item)
         else:
-            screen.blit(item[0], (item[1].x(), item[1].y()))
+            screen.blit(item[0], (item[1].x, item[1].y))
             
-    screen.blit(crab, (carangueijo.x(), carangueijo.y()))
+    screen.blit(crab, (carangueijo.x, carangueijo.y))
     
     # Update na tela (duh)
 
