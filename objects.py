@@ -49,7 +49,7 @@ class Player:
         return self.speed_obj
 
     def move(self, direcao):
-        if direcao[pg.K_d]:
+        if direcao[pg.K_d] and self.x < pg.display.get_window_size()[0]:
             self.pos_x += self.speed
-        if direcao[pg.K_a]:
+        if direcao[pg.K_a] and self.x > 0:
             self.pos_x -= self.speed
