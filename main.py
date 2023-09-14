@@ -10,9 +10,14 @@ frame_count = 0
 fundo = pg.image.load('graphics/swamp.png')
 crab = pg.image.load('graphics/crab.png')
 
+#Fonte para o counter
+pg.font.init()
+fonte = pg.font.Font(None, 36)
+color_font = (0,0,0)
+
 removidos = []
 onscreen = []
-contador = {'pitu': 0, 'garrafa': 0, 'pneu': 0}
+counter = {'pitu': 0, 'bottle': 0, 'tire': 0}
 dificuldade = 1
 speed_game = 4
 rodando = True
@@ -70,15 +75,17 @@ while rodando:
             removidos.append(onscreen.index(item))
         
         item_rec = item[0].get_rect(topleft = (item[1].x, item[1].y))
+
+        #Colisão de objetos
         if crab.get_rect(topleft = (caranguejo.x, caranguejo.y)).colliderect(item_rec):
             if item[1].sprite_id == 0:
-                contador['pitu'] += 1
+                counter['pitu'] += 1
             elif item[1].sprite_id == 1:
-                contador['garrafa'] += 1
+                counter['bottle'] += 1
             else:
-                contador['pneu'] += 1
+                counter['tire'] += 1
             
-            print(contador)
+            print(counter)
             removidos.append(onscreen.index(item))
         
         else:
@@ -87,6 +94,14 @@ while rodando:
 
             screen.blit(pg.transform.rotate(item[0], angle), (item[1].x, item[1].y))
             item[1].pos_y += item[1].speed
+
+        #Exibir counter na tela
+        pitu_counter = fonte.render(f'Pitus coletados: ' + str(counter['pitu']), True, color_font)
+        screen.blit(pitu_counter, (20, 20))
+        tire_counter = fonte.render(f'Pneus coletados: ' + str(counter['tire']), True, color_font)
+        screen.blit(tire_counter, (20, 50))
+        bottle_counter = fonte.render(f'Garrafas coletados: ' + str(counter['bottle']), True, color_font)
+        screen.blit(tire_counter, (20, 80))
 
 
     screen.blit(crab, (caranguejo.x, caranguejo.y))
