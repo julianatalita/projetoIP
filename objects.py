@@ -31,11 +31,12 @@ class Player:
 
     # O player por enquanto é só x, y, largura da imagem e altura da imagem
 
-    def __init__(self, pos_x, pos_y, speed_obj):
+    def __init__(self, pos_x, pos_y, speed_obj, width):
         self.pos_x = pos_x
         self.pos_y = pos_y
         self.speed_obj = speed_obj
-
+        self.width = width
+        
     @property
     def x(self):
         return self.pos_x
@@ -48,8 +49,16 @@ class Player:
     def speed(self):
         return self.speed_obj
 
+    @property
+    def player_width(self):
+        return self.width
+
     def move(self, direcao):
-        if direcao[pg.K_d] and self.x < pg.display.get_window_size()[0]:
+        if direcao[pg.K_d] and self.x < pg.display.get_window_size()[0] - self.player_width:
             self.pos_x += self.speed
+            if self.pos_x > pg.display.get_window_size()[0] - self.player_width:
+                self.pos_x = pg.display.get_window_size()[0] - self.player_width
         if direcao[pg.K_a] and self.x > 0:
             self.pos_x -= self.speed
+            if self.pos_x < 0:
+                self.pos_x = 0

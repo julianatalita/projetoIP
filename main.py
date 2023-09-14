@@ -2,13 +2,13 @@ import pygame as pg
 from functions import spawn_lixo
 from objects import Player
 
-screen = pg.display.set_mode((800,800))
-clock = pg.time.Clock()
-caranguejo = Player(400, 650, 4)
-frame_count = 0
-
 fundo = pg.image.load('graphics/swamp.png')
 crab = pg.image.load('graphics/crab.png')
+
+screen = pg.display.set_mode((800,800))
+clock = pg.time.Clock()
+caranguejo = Player(400, 650, 4, int(crab.get_width()))
+frame_count = 0
 
 #Fonte para o counter
 pg.font.init()

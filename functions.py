@@ -6,7 +6,7 @@ from sprite_sheet import sprite_sheet
 def spawn_lixo(speed):
 
     width, height = pg.display.get_window_size()
-    randint_x = randint(0,width)
+    randint_x = randint(0,width-20)
     randint_y = randint(0,height/8)
 
     # a próxima linha inicia um lixo em uma posição aleatória no frame que é fornecido à função (usado para saber se é pra renderizar o lixo ou não)
