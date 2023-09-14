@@ -95,13 +95,13 @@ while rodando:
             screen.blit(pg.transform.rotate(item[0], angle), (item[1].x, item[1].y))
             item[1].pos_y += item[1].speed
 
-        #Exibir counter na tela
-        pitu_counter = fonte.render(f'Pitus coletados: ' + str(counter['pitu']), True, color_font)
-        screen.blit(pitu_counter, (20, 20))
-        tire_counter = fonte.render(f'Pneus coletados: ' + str(counter['tire']), True, color_font)
-        screen.blit(tire_counter, (20, 50))
-        bottle_counter = fonte.render(f'Garrafas coletados: ' + str(counter['bottle']), True, color_font)
-        screen.blit(tire_counter, (20, 80))
+    #Exibir counter na tela
+    pitu_counter = fonte.render(f'Pitus coletados: ' + str(counter['pitu']), True, color_font)
+    screen.blit(pitu_counter, (20, 20))
+    tire_counter = fonte.render(f'Pneus coletados: ' + str(counter['tire']), True, color_font)
+    screen.blit(tire_counter, (20, 50))
+    bottle_counter = fonte.render(f'Garrafas coletados: ' + str(counter['bottle']), True, color_font)
+    screen.blit(bottle_counter, (20, 80))
 
 
     screen.blit(crab, (caranguejo.x, caranguejo.y))
