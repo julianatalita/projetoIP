@@ -15,7 +15,6 @@ pg.font.init()
 fonte = pg.font.Font(None, 36)
 color_font = (0,0,0)
 
-removidos = []
 onscreen = []
 counter = {'pitu': 0, 'bottle': 0, 'tire': 0}
 dificuldade = 1
@@ -97,11 +96,11 @@ while rodando:
 
     #Exibir counter na tela
     pitu_counter = fonte.render(f'Pitus coletados: ' + str(counter['pitu']), True, color_font)
-    screen.blit(pitu_counter, (20, 20))
+    screen.blit(pitu_counter, (25, 20))
+    bottle_counter = fonte.render(f'Garrafas coletadas: ' + str(counter['bottle']), True, color_font)
+    screen.blit(bottle_counter, (25, 50))
     tire_counter = fonte.render(f'Pneus coletados: ' + str(counter['tire']), True, color_font)
-    screen.blit(tire_counter, (20, 50))
-    bottle_counter = fonte.render(f'Garrafas coletados: ' + str(counter['bottle']), True, color_font)
-    screen.blit(bottle_counter, (20, 80))
+    screen.blit(tire_counter, (25, 80))
 
 
     screen.blit(crab, (caranguejo.x, caranguejo.y))
