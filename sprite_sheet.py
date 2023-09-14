@@ -8,6 +8,6 @@ sprites_mangues = [pg.image.load('graphics/swamp.png')]
 
 sprites_fundo = [pg.image.load('graphics/fundo.png')]
 
-sprites_player = [pg.image.load('graphics/crab.png')]
+sprites_player = [pg.image.load('graphics/Crab1.png'), pg.image.load('graphics/Crab2.png')]
 
 sprite_sheet = [sprites_pitu, sprites_bottle, sprites_tire, sprites_mangues, sprites_fundo, sprites_player]

@@ -1,13 +1,14 @@
 import pygame as pg
 from functions import spawn_lixo
 from objects import Player
+from sprite_sheet import sprites_player
 
 fundo = pg.image.load('graphics/swamp.png')
-crab = pg.image.load('graphics/crab.png')
+crab = sprites_player
 
 screen = pg.display.set_mode((800,800))
 clock = pg.time.Clock()
-caranguejo = Player(400, 650, 4, int(crab.get_width()))
+caranguejo = Player(400, 650, 4, int(crab[0].get_width()))
 frame_count = 0
 
 #Fonte para o counter
@@ -21,6 +22,7 @@ dificuldade = 1
 speed_game = 4
 rodando = True
 angle = 0
+crab_animation = 0
 
 while rodando:
 
@@ -53,6 +55,13 @@ while rodando:
             if frame_count % 60 == 0 and 60-dificuldade > 15:
                 dificuldade += 1 
 
+    # Mudar a animação do caranguejo a cada 0,3 segundo
+    if frame_count % 20 == 0:
+        if crab_animation == 1:
+            crab_animation = 0
+        else:
+            crab_animation = 1
+
     
     keys = pg.key.get_pressed()
     caranguejo.move(keys)
@@ -76,7 +85,7 @@ while rodando:
         item_rec = item[0].get_rect(topleft = (item[1].x, item[1].y))
 
         #Colisão de objetos
-        if crab.get_rect(topleft = (caranguejo.x, caranguejo.y)).colliderect(item_rec):
+        if crab[0].get_rect(topleft = (caranguejo.x, caranguejo.y)).colliderect(item_rec):
             if item[1].sprite_id == 0:
                 counter['pitu'] += 1
             elif item[1].sprite_id == 1:
@@ -102,12 +111,15 @@ while rodando:
     tire_counter = fonte.render(f'Pneus coletados: ' + str(counter['tire']), True, color_font)
     screen.blit(tire_counter, (25, 80))
 
+    # Iterando sobre a lista da animação
+    image_crab = crab[crab_animation]
 
-    screen.blit(crab, (caranguejo.x, caranguejo.y))
+    screen.blit(image_crab, (caranguejo.x, caranguejo.y))
     
     # Update na tela (duh)
 
     pg.display.update()
+
 
     for i in removidos:
         onscreen.pop(i)
