@@ -55,13 +55,13 @@ def game_diff(frame_count, dificuldade, onscreen, angle):
 
     return frame_count, dificuldade, onscreen, speed_game, angle
     
-def remove_obj(removidos, item, crab, screen, counter, caranguejo):
+def remove_obj(removidos, item, crab, screen, counter, crab_player):
     if item[1].y > screen.get_height():
         removidos.append(item)
 
     item_rec = item[0].get_rect(topleft = (item[1].x, item[1].y))
 
-    if crab[0].get_rect(topleft = (caranguejo.x, caranguejo.y)).colliderect(item_rec):
+    if crab[0].get_rect(topleft = (crab_player.x, crab_player.y)).colliderect(item_rec):
         if item[1].sprite_id == 0:
             counter['pitu'] += 1
         elif item[1].sprite_id == 1:

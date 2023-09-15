@@ -40,7 +40,7 @@ class Lixo(Positions):
 
 class Player(Positions):
 
-    # O player por enquanto é só x, y, largura da imagem e altura da imagem
+    # O player por enquanto é só x, y e largura dele
     def __init__(self, pos_x, pos_y, speed_obj, width):
         super().__init__(pos_x, pos_y)
         self.speed_obj = speed_obj
