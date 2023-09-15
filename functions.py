@@ -17,6 +17,7 @@ def spawn_lixo(speed):
     return [sprite_sheet[obj.sprite_id], obj]
 
 def draw_counter(counter):
+
     pg.font.init()
     fonte = pg.font.Font(None, 36)
     color_font = (0,0,0)
@@ -29,7 +30,10 @@ def draw_counter(counter):
 
     return pitu_counter, bottle_counter, tire_counter
 
-def game_diff(frame_count, dificuldade, onscreen):
+def game_diff(frame_count, dificuldade, onscreen, angle):
+
+    if frame_count % 3 == 0:
+        angle = (angle+1)%360
     
     speed_game = 4 + int(frame_count/180)
 
@@ -49,5 +53,23 @@ def game_diff(frame_count, dificuldade, onscreen):
             if frame_count % 60 == 0 and 60-dificuldade > 15:
                 dificuldade += 1 
 
-    return frame_count, dificuldade, onscreen, speed_game
+    return frame_count, dificuldade, onscreen, speed_game, angle
     
+def remove_obj(removidos, item, crab, screen, counter, caranguejo):
+    if item[1].y > screen.get_height():
+        removidos.append(item)
+
+    item_rec = item[0].get_rect(topleft = (item[1].x, item[1].y))
+
+    if crab[0].get_rect(topleft = (caranguejo.x, caranguejo.y)).colliderect(item_rec):
+        if item[1].sprite_id == 0:
+            counter['pitu'] += 1
+        elif item[1].sprite_id == 1:
+            counter['bottle'] += 1
+        else:
+            counter['tire'] += 1
+            
+        print(counter)
+        removidos.append(item)
+    
+    return removidos
