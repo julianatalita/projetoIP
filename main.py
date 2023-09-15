@@ -1,67 +1,50 @@
 import pygame as pg
-from functions import spawn_lixo, draw_counter
+from functions import spawn_lixo, draw_counter, game_diff
 from objects import Player
 from sprite_sheet import sprites_player
 
 fundo = pg.image.load('graphics/swamp.png')
 crab = sprites_player
 
-screen = pg.display.set_mode((800,800))
+pg.display.init()
+
+x_screen, y_screen = pg.display.Info().current_w, pg.display.Info().current_h
+
+screen = pg.display.set_mode((int(x_screen/2), int(3*y_screen/4)))
+x_screen, y_screen = screen.get_size()
+
 clock = pg.time.Clock()
-caranguejo = Player(400, 650, 4, int(crab[0].get_width()))
+
+caranguejo = Player(x_screen/2-int(crab[0].get_width()), int(y_screen*0.8125), 4, int(crab[0].get_width()))
+
 frame_count = 0
 
 onscreen = []
 counter = {'pitu': 0, 'bottle': 0, 'tire': 0}
 dificuldade = 1
-speed_game = 4
 rodando = True
 angle = 0
 crab_animation = 0
 
 while rodando:
 
-    # Sair do jogo ao fechar a janela
     for event in pg.event.get():
         if event.type == pg.QUIT:
             pg.quit()
             rodando = False
             exit()
+    
+    frame_count, dificuldade, onscreen, speed_game = game_diff(frame_count, dificuldade, onscreen)
 
-    # Spawnar um lixo
-    if frame_count % 60-dificuldade == 0:
-        lixo_novo = spawn_lixo(speed_game)
-        onscreen.append(lixo_novo)
-        
-        if dificuldade > 30:
-            lixo_novo = spawn_lixo(int(speed_game/2))
-            onscreen.append(lixo_novo)
-
-    # Mudar a velocidade do jogo a cade 3 segundos
-    if frame_count % 180 == 0:
-        speed_game += 1
-        caranguejo.speed_obj = int(speed_game*1.2)
-
-    # Aumentar o spawnrate a cada segundo
-    if frame_count % 60 == 0:
-        if dificuldade < 30:
-            dificuldade += 1
-        else:
-            if frame_count % 60 == 0 and 60-dificuldade > 15:
-                dificuldade += 1 
-
-    # Mudar a animação do caranguejo a cada 0,3 segundo
     if frame_count % 20 == 0:
         image_crab, crab_animation = caranguejo.animate(crab_animation)
 
+    caranguejo.speed_obj = int(speed_game*1.2)
     
     keys = pg.key.get_pressed()
     caranguejo.move(keys)
 
-    # draw nas surfaces
     screen.blit(fundo, (0,0))
-
-    # desenhar apenas os lixos que não forem tocados
 
     removidos = []
 
@@ -105,7 +88,6 @@ while rodando:
 
     pg.display.update()
 
-
     for i in removidos:
         onscreen.pop(i)
         removidos.remove(i)    
@@ -113,6 +95,4 @@ while rodando:
 
     frame_count += 1
 
-    print(clock.get_fps())
-    
-    clock.tick(60)
+    clock.tick(60)  
