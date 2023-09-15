@@ -1,15 +1,25 @@
 import pygame as pg
 from sprite_sheet import sprite_sheet
+from abc import ABC
+from random import randint
 
-class Lixo:
-
-    # Iniciar com x, y, frame que a sacola foi gerada, largura do sprite, altura do sprite, id (ignorar por enquanto, é pra ser uma spritesheet dps)
-
-    def __init__(self, pos_x, pos_y, id, speed_obj):
+class Positions(ABC):
+    def __init__(self, pos_x, pos_y):
         self.pos_x = pos_x
         self.pos_y = pos_y
+    
+    
+
+class Lixo(Positions):
+
+    # Iniciar com x, y, id e velocidade
+    def __init__(self, pos_x, pos_y, id, frame_count):
+        super().__init__(pos_x, pos_y)
         self.id = id
-        self.speed_obj = speed_obj
+        self.frame_count = frame_count
+        
+        const = 4 + int(self.frame_count/180)
+        self.speed_obj = int(randint(int(const/2),const)+const/2)
     
     @property
     def x(self):
@@ -28,13 +38,11 @@ class Lixo:
         return self.speed_obj
     
 
-class Player:
+class Player(Positions):
 
     # O player por enquanto é só x, y, largura da imagem e altura da imagem
-
     def __init__(self, pos_x, pos_y, speed_obj, width):
-        self.pos_x = pos_x
-        self.pos_y = pos_y
+        super().__init__(pos_x, pos_y)
         self.speed_obj = speed_obj
         self.width = width
         
