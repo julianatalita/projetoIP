@@ -1,4 +1,5 @@
 import pygame as pg
+from sprite_sheet import sprite_sheet
 
 class Lixo:
 
@@ -62,3 +63,7 @@ class Player:
             self.pos_x -= self.speed
             if self.pos_x < 0:
                 self.pos_x = 0
+    
+    def animate(self, animation_i):
+        animation_i = (animation_i+1)% len(sprite_sheet[5])
+        return sprite_sheet[5][animation_i], animation_i

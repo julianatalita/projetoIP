@@ -9,13 +9,21 @@ def spawn_lixo(speed):
     randint_x = randint(0,width-20)
     randint_y = randint(0,height/8)
 
-    # a próxima linha inicia um lixo em uma posição aleatória no frame que é fornecido à função (usado para saber se é pra renderizar o lixo ou não)
-    # 122,177,0 é por que ainda só tem 1 tipo de lixo
-
     obj = Lixo(randint_x, randint_y, randint(0, 2), int(randint(int(speed/2),speed)+speed/2))
 
     # pra não ficar um módulo circular, é melhor dar blit(return[0], return[1])
 
     return [sprite_sheet[obj.sprite_id], obj]
 
+def draw_counter(counter):
+    pg.font.init()
+    fonte = pg.font.Font(None, 36)
+    color_font = (0,0,0)
 
+    pitu_counter = fonte.render(f'Pitus coletados: ' + str(counter['pitu']), True, color_font)
+    
+    bottle_counter = fonte.render(f'Garrafas coletadas: ' + str(counter['bottle']), True, color_font)
+    
+    tire_counter = fonte.render(f'Pneus coletados: ' + str(counter['tire']), True, color_font)
+
+    return pitu_counter, bottle_counter, tire_counter

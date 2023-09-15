@@ -1,5 +1,5 @@
 import pygame as pg
-from functions import spawn_lixo
+from functions import spawn_lixo, draw_counter
 from objects import Player
 from sprite_sheet import sprites_player
 
@@ -10,11 +10,6 @@ screen = pg.display.set_mode((800,800))
 clock = pg.time.Clock()
 caranguejo = Player(400, 650, 4, int(crab[0].get_width()))
 frame_count = 0
-
-#Fonte para o counter
-pg.font.init()
-fonte = pg.font.Font(None, 36)
-color_font = (0,0,0)
 
 onscreen = []
 counter = {'pitu': 0, 'bottle': 0, 'tire': 0}
@@ -57,10 +52,7 @@ while rodando:
 
     # Mudar a animação do caranguejo a cada 0,3 segundo
     if frame_count % 20 == 0:
-        if crab_animation == 1:
-            crab_animation = 0
-        else:
-            crab_animation = 1
+        image_crab, crab_animation = caranguejo.animate(crab_animation)
 
     
     keys = pg.key.get_pressed()
@@ -77,7 +69,7 @@ while rodando:
         
         # mudar o angulo de pouco em pouco
         if frame_count % 3 == 0:
-            angle += 1
+            angle = (angle+1)%360
         
         if item[1].y > screen.get_height():
             removidos.append(onscreen.index(item))
@@ -97,22 +89,15 @@ while rodando:
             removidos.append(onscreen.index(item))
         
         else:
-            
-            # troquei image[0] pela função que roda image[0] por um angle
 
-            screen.blit(pg.transform.rotate(item[0], angle), (item[1].x, item[1].y))
+            screen.blit(pg.transform.rotate(item[0], angle+int(item[1].speed)), (item[1].x, item[1].y))
             item[1].pos_y += item[1].speed
 
     #Exibir counter na tela
-    pitu_counter = fonte.render(f'Pitus coletados: ' + str(counter['pitu']), True, color_font)
+    pitu_counter, bottle_counter, tire_counter = draw_counter(counter)
     screen.blit(pitu_counter, (25, 20))
-    bottle_counter = fonte.render(f'Garrafas coletadas: ' + str(counter['bottle']), True, color_font)
     screen.blit(bottle_counter, (25, 50))
-    tire_counter = fonte.render(f'Pneus coletados: ' + str(counter['tire']), True, color_font)
     screen.blit(tire_counter, (25, 80))
-
-    # Iterando sobre a lista da animação
-    image_crab = crab[crab_animation]
 
     screen.blit(image_crab, (caranguejo.x, caranguejo.y))
     
@@ -128,4 +113,6 @@ while rodando:
 
     frame_count += 1
 
+    print(clock.get_fps())
+    
     clock.tick(60)
