@@ -16,7 +16,7 @@ def spawn_lixo(speed, frame_count):
 
     return [sprite_sheet[obj.sprite_id], obj]
 
-def draw_counter(counter):
+def draw_counter(counter, screen):
 
     pg.font.init()
     fonte = pg.font.Font(None, 36)
@@ -28,7 +28,12 @@ def draw_counter(counter):
     
     tire_counter = fonte.render(f'Pneus coletados: ' + str(counter['tire']), True, color_font)
 
-    return pitu_counter, bottle_counter, tire_counter
+    screen.blit(pitu_counter, (25, 20))
+
+    screen.blit(bottle_counter, (25, 50))
+
+    screen.blit(tire_counter, (25, 80))
+
 
 def game_diff(frame_count, dificuldade, onscreen, angle):
 
@@ -73,3 +78,21 @@ def remove_obj(removidos, item, crab, screen, counter, crab_player):
         removidos.append(item)
     
     return removidos
+
+def init_game():
+    pg.display.init()
+    x_screen, y_screen = pg.display.Info().current_w, pg.display.Info().current_h
+    screen = pg.display.set_mode((int(x_screen/2), int(3*y_screen/4)))
+    x_screen, y_screen = screen.get_size()
+
+    clock = pg.time.Clock()
+    
+    frame_count = 0
+
+    onscreen = []
+    counter = {'pitu': 0, 'bottle': 0, 'tire': 0}
+    dificuldade = 1
+    running = True
+    angle = 0
+    crab_animation = 0
+    return x_screen, y_screen, screen, clock, frame_count, onscreen, counter, dificuldade, running, angle, crab_animation
