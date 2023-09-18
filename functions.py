@@ -35,11 +35,8 @@ def draw_counter(counter, screen):
     screen.blit(tire_counter, (25, 80))
 
 
-def game_diff(frame_count, dificuldade, onscreen, angle):
+def game_diff(frame_count, dificuldade, onscreen):
 
-    if frame_count % 3 == 0:
-        angle = (angle+1)%360
-    
     speed_game = 4 + int(frame_count/180)
 
     if frame_count % 60-dificuldade == 0:
@@ -58,7 +55,7 @@ def game_diff(frame_count, dificuldade, onscreen, angle):
             if frame_count % 60 == 0 and 60-dificuldade > 15:
                 dificuldade += 1 
 
-    return frame_count, dificuldade, onscreen, speed_game, angle
+    return frame_count, dificuldade, onscreen, speed_game
     
 def remove_obj(removidos, item, crab, screen, counter, crab_player):
     if item[1].y > screen.get_height():

@@ -10,6 +10,13 @@ pg.display.init()
 x_screen, y_screen, screen, clock, frame_count, onscreen, counter, dificuldade, running, angle, crab_animation = init_game()
 
 crab_player = Player(x_screen/2-int(crab[0].get_width()), int(y_screen*0.8125), 4, int(crab[0].get_width()))
+frame_count = 0
+
+onscreen = []
+counter = {'pitu': 0, 'bottle': 0, 'tire': 0}
+dificuldade = 1
+running = True
+animation_i = 0
 
 while running:
 
@@ -19,28 +26,22 @@ while running:
             running = False
             exit()
     
-    frame_count, dificuldade, onscreen, speed_game, angle = game_diff(frame_count, dificuldade, onscreen, angle)
+    screen.blit(fundo, (0,0))
 
-    if frame_count % 20 == 0:
-        image_crab, crab_animation = crab_player.animate(crab_animation)
-
-    crab_player.speed_obj = int(speed_game*1.2)
+    frame_count, dificuldade, onscreen, speed_game = game_diff(frame_count, dificuldade, onscreen)
     
     keys = pg.key.get_pressed()
     crab_player.move(keys)
 
-    screen.blit(fundo, (0,0))
-
     removidos = []
-
+    
     for item in onscreen:
         removidos = remove_obj(removidos, item, crab, screen, counter, crab_player)
-        screen.blit(pg.transform.rotate(item[0], angle+int(item[1].speed)), (item[1].x, item[1].y))
-        item[1].pos_y += item[1].speed
+        item[1].update(screen, pg.transform.rotate(item[0], item[1].obj_angle))
 
-    draw_counter(counter, screen)
+    animation_i = crab_player.animate(animation_i, screen, frame_count)
 
-    screen.blit(image_crab, (crab_player.x, crab_player.y))
+    draw_counter(screen, counter)
 
     pg.display.update()
 

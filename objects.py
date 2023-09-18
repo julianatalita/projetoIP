@@ -17,7 +17,7 @@ class Lixo(Positions):
         super().__init__(pos_x, pos_y)
         self.id = id
         self.frame_count = frame_count
-        
+        self.angle = randint(1,360)
         const = 4 + int(self.frame_count/180)
         self.speed_obj = int(randint(int(const/2),const)+const/2)
     
@@ -36,6 +36,15 @@ class Lixo(Positions):
     @property
     def speed(self):
         return self.speed_obj
+    
+    @property
+    def obj_angle(self):
+        return self.angle
+
+    def update(self, screen, img):
+        self.angle += 1
+        self.pos_y += self.speed
+        screen.blit(img, (self.x, self.y))
     
 
 class Player(Positions):
@@ -63,6 +72,7 @@ class Player(Positions):
         return self.width
 
     def move(self, direcao):
+        
         if direcao[pg.K_d] and self.x < pg.display.get_window_size()[0] - self.player_width:
             self.pos_x += self.speed
             if self.pos_x > pg.display.get_window_size()[0] - self.player_width:
@@ -72,6 +82,10 @@ class Player(Positions):
             if self.pos_x < 0:
                 self.pos_x = 0
     
-    def animate(self, animation_i):
-        animation_i = (animation_i+1)% len(sprite_sheet[5])
-        return sprite_sheet[5][animation_i], animation_i
+    def animate(self, animation_i, screen, frame_count):
+
+        if frame_count % 20 == 0:
+            animation_i = (animation_i+1)% len(sprite_sheet[5])
+            
+        screen.blit(sprite_sheet[5][animation_i], (self.x, self.y))
+        return animation_i
