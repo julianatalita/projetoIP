@@ -3,8 +3,10 @@ from functions import spawn_lixo, draw_counter, game_diff, remove_obj
 from objects import Player
 from sprite_sheet import sprites_player
 from button import Button_Start, Button_Exit
+from time import time
 
 pg.display.init()
+pg.font.init()
 
 x_screen, y_screen = pg.display.Info().current_w, pg.display.Info().current_h
 screen = pg.display.set_mode((int(x_screen/2), int(3*y_screen/4)))
@@ -27,6 +29,7 @@ dificuldade = 1
 running = False
 angle = 0
 crab_animation = 0
+my_font = pg.font.SysFont('arial', 40)
 
 while not running:
     screen.blit(background_start, (0,0))
@@ -42,6 +45,7 @@ while not running:
 
     if start.update():
         running = True
+        START_TIME = time()
     elif close.update():
         pg.quit()
         exit()
@@ -77,6 +81,7 @@ while running:
     screen.blit(pitu_counter, (25, 20))
     screen.blit(bottle_counter, (25, 50))
     screen.blit(tire_counter, (25, 80))
+    screen.blit(my_font.render(str((time() - START_TIME)), False, (0,0,0)), (750, 20))
 
     screen.blit(image_crab, (crab_player.x, crab_player.y))
 
