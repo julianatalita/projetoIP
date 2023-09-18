@@ -40,6 +40,12 @@ while not running:
     
     pg.display.update()
 
+    if start.update():
+        print('a')
+        running = True
+    elif close.update():
+        pg.quit()
+        exit()
 
 while running:
 
