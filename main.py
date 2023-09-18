@@ -2,15 +2,20 @@ import pygame as pg
 from functions import spawn_lixo, draw_counter, game_diff, remove_obj
 from objects import Player
 from sprite_sheet import sprites_player
-
-fundo = pg.image.load('graphics/swamp.png')
-crab = sprites_player
+from button import Button_Start, Button_Exit
 
 pg.display.init()
 
 x_screen, y_screen = pg.display.Info().current_w, pg.display.Info().current_h
 screen = pg.display.set_mode((int(x_screen/2), int(3*y_screen/4)))
 x_screen, y_screen = screen.get_size()
+
+fundo = pg.image.load('graphics/swamp.png')
+background_start = pg.image.load('graphics/Background.png')
+background_start = pg.transform.scale(background_start, screen.get_size())
+start = Button_Start('graphics/Button_play.png', screen)
+close = Button_Exit('graphics/Button_Exit.png', screen)
+crab = sprites_player
 
 clock = pg.time.Clock()
 crab_player = Player(x_screen/2-int(crab[0].get_width()), int(y_screen*0.8125), 4, int(crab[0].get_width()))
@@ -19,9 +24,22 @@ frame_count = 0
 onscreen = []
 counter = {'pitu': 0, 'bottle': 0, 'tire': 0}
 dificuldade = 1
-running = True
+running = False
 angle = 0
 crab_animation = 0
+
+while not running:
+    screen.blit(background_start, (0,0))
+    start.draw_button()
+    close.draw_button()
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            pg.quit()
+            running = False
+            exit()
+    
+    pg.display.update()
+
 
 while running:
 
