@@ -17,23 +17,26 @@ def spawn_lixo(frame_count):
 
     return [sprite_sheet[obj.sprite_id], obj]
 
-def draw_counter(counter, screen):
+def draw_counter(counter, screen, image_background):
 
     pg.font.init()
-    fonte = pg.font.Font(None, 36)
-    color_font = (0,0,0)
-
-    pitu_counter = fonte.render(f'Pitus coletados: ' + str(counter['pitu']), True, color_font)
+    fonte = pg.font.Font(None, 30)
+    color_font = (255,255,255)
     
-    bottle_counter = fonte.render(f'Garrafas coletadas: ' + str(counter['bottle']), True, color_font)
+    pitu_counter = fonte.render(f'Pitus: ' + str(counter['pitu']), True, color_font)
     
-    tire_counter = fonte.render(f'Pneus coletados: ' + str(counter['tire']), True, color_font)
+    bottle_counter = fonte.render(f'Garrafas: ' + str(counter['bottle']), True, color_font)
+    
+    tire_counter = fonte.render(f'Pneus: ' + str(counter['tire']), True, color_font)
+ 
+    screen.blit(image_background, (5,10))
+    screen.blit(pitu_counter, (25,25))
 
-    screen.blit(pitu_counter, (25, 20))
+    screen.blit(image_background, (5,50))
+    screen.blit(bottle_counter, (25, 65))
 
-    screen.blit(bottle_counter, (25, 50))
-
-    screen.blit(tire_counter, (25, 80))
+    screen.blit(image_background, (5,90))
+    screen.blit(tire_counter, (25, 105))
 
 def game_diff(frame_count, dificuldade, onscreen):
 

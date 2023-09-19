@@ -15,6 +15,8 @@ x_screen, y_screen, screen, clock, frame_count, onscreen, counter, dificuldade, 
 background_game = pg.image.load('graphics/swamp.png')
 background_start = pg.image.load('graphics/Background.png')
 background_start = pg.transform.scale(background_start, screen.get_size())
+counter_box = pg.image.load('graphics/counter_background.png')
+clock_box = pg.image.load('graphics/clock_background.png')
 start = Button_Start('graphics/Button_play.png', screen)
 close = Button_Exit('graphics/Button_Exit.png', screen)
 crab = sprites_player
@@ -24,7 +26,7 @@ music_start = Music('musics/start_game.mp3')
 clock = pg.time.Clock()
 crab_player = Player(x_screen/2-int(crab[0].get_width()), int(y_screen*0.8125), 4, int(crab[0].get_width()))
 
-my_font = pg.font.SysFont('arial', 40)
+my_font = pg.font.SysFont('arial', 36)
 
 while not running:
     screen.blit(background_start, (0,0))
@@ -47,7 +49,7 @@ while not running:
         pg.quit()
         exit()
 
-music_game.play(2)
+music_game.play(1.5)
 
 while running:
 
@@ -71,9 +73,9 @@ while running:
         removidos = remove_obj(removidos, item, crab, screen, counter, crab_player)
         item[1].update(screen, pg.transform.rotate(item[0], item[1].obj_angle))
 
-    stopwatch.draw_stopwatch(screen, my_font, x_screen)
+    stopwatch.draw_stopwatch(screen, my_font, x_screen, clock_box)
 
-    draw_counter(counter, screen)
+    draw_counter(counter, screen, counter_box)
 
     pg.display.update()
 
