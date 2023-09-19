@@ -1,16 +1,17 @@
 import pygame as pg
-from functions import spawn_lixo, draw_counter, game_diff, remove_obj, init_game
+from functions import draw_counter, game_diff, remove_obj, init_game
 from objects import Player
 from sprite_sheet import sprites_player
 from button import Button_Start, Button_Exit
 from time import time
+from stopwatch import Stopwatch
 
 pg.display.init()
 pg.font.init()
 
 x_screen, y_screen, screen, clock, frame_count, onscreen, counter, dificuldade, running, angle, animation_i = init_game()
 
-fundo = pg.image.load('graphics/swamp.png')
+background_game = pg.image.load('graphics/swamp.png')
 background_start = pg.image.load('graphics/Background.png')
 background_start = pg.transform.scale(background_start, screen.get_size())
 start = Button_Start('graphics/Button_play.png', screen)
@@ -37,13 +38,14 @@ while not running:
     if start.update():
         running = True
         START_TIME = time()
+        stopwatch = Stopwatch(START_TIME)
     elif close.update():
         pg.quit()
         exit()
 
 while running:
 
-    screen.blit(fundo, (0,0))
+    screen.blit(background_game, (0,0))
 
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -63,7 +65,7 @@ while running:
         removidos = remove_obj(removidos, item, crab, screen, counter, crab_player)
         item[1].update(screen, pg.transform.rotate(item[0], item[1].obj_angle))
 
-    screen.blit(my_font.render(str((time() - START_TIME)), False, (0,0,0)), (750, 20))
+    stopwatch.draw_stopwatch(screen, my_font, x_screen)
 
     draw_counter(counter, screen)
 

@@ -1,8 +1,8 @@
 import pygame as pg
+from abc import ABC
 
 #button class
-class Button():
-
+class Button(ABC):
     def __init__(self, image_id, screen):
         self.image = pg.image.load(image_id)
         self.screen = screen

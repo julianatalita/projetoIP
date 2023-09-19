@@ -4,7 +4,7 @@ from objects import Lixo
 from sprite_sheet import sprite_sheet
 from math import log2
 
-def spawn_lixo(speed, frame_count):
+def spawn_lixo(frame_count):
 
     width, height = pg.display.get_window_size()
 
@@ -42,7 +42,7 @@ def game_diff(frame_count, dificuldade, onscreen):
     dificuldade = int(log2(1 + int(frame_count/360)))+1
 
     if frame_count % int(60/(dificuldade/1.5)) == 0 and len(onscreen) < 1 + dificuldade * 1.1:
-        lixo_novo = spawn_lixo(speed_game/dificuldade, frame_count)
+        lixo_novo = spawn_lixo(frame_count)
         onscreen.append(lixo_novo)
 
     # Aumentar o spawnrate a cada segundo
