@@ -42,14 +42,14 @@ while not running:
 
     if start.update():
         running = True
-        START_TIME = time()
-        stopwatch = Stopwatch(START_TIME)
         music_start.play(0)
     elif close.update():
         pg.quit()
         exit()
 
 music_game.play(1.5)
+START_TIME = time()
+stopwatch = Stopwatch(START_TIME)
 
 while running:
 
@@ -85,4 +85,4 @@ while running:
 
     frame_count += 1
 
-    clock.tick(60)  
+    clock.tick(60)
