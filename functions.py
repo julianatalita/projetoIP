@@ -8,7 +8,7 @@ def spawn_lixo(frame_count):
 
     width, height = pg.display.get_window_size()
 
-    randint_x = randint(width/6,int(5*width/6))
+    randint_x = randint(width//6,int(5*width//6))
     randint_y = randint(0,int(height/16))
 
     obj = Lixo(randint_x, randint_y, randint(0, 2), frame_count)
