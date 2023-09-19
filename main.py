@@ -1,5 +1,5 @@
 import pygame as pg
-from functions import spawn_lixo, draw_counter, game_diff, remove_obj
+from functions import spawn_lixo, draw_counter, game_diff, remove_obj, init_game
 from objects import Player
 from sprite_sheet import sprites_player
 from button import Button_Start, Button_Exit
@@ -8,9 +8,7 @@ from time import time
 pg.display.init()
 pg.font.init()
 
-x_screen, y_screen = pg.display.Info().current_w, pg.display.Info().current_h
-screen = pg.display.set_mode((int(x_screen/2), int(3*y_screen/4)))
-x_screen, y_screen = screen.get_size()
+x_screen, y_screen, screen, clock, frame_count, onscreen, counter, dificuldade, running, angle, animation_i = init_game()
 
 fundo = pg.image.load('graphics/swamp.png')
 background_start = pg.image.load('graphics/Background.png')
@@ -21,14 +19,7 @@ crab = sprites_player
 
 clock = pg.time.Clock()
 crab_player = Player(x_screen/2-int(crab[0].get_width()), int(y_screen*0.8125), 4, int(crab[0].get_width()))
-frame_count = 0
 
-onscreen = []
-counter = {'pitu': 0, 'bottle': 0, 'tire': 0}
-dificuldade = 1
-running = False
-angle = 0
-crab_animation = 0
 my_font = pg.font.SysFont('arial', 40)
 
 while not running:
@@ -52,38 +43,29 @@ while not running:
 
 while running:
 
+    screen.blit(fundo, (0,0))
+
     for event in pg.event.get():
         if event.type == pg.QUIT:
             pg.quit()
             running = False
             exit()
     
-    frame_count, dificuldade, onscreen, speed_game, angle = game_diff(frame_count, dificuldade, onscreen, angle)
+    frame_count, dificuldade, onscreen, speed_game = game_diff(frame_count, dificuldade, onscreen)
 
-    if frame_count % 20 == 0:
-        image_crab, crab_animation = crab_player.animate(crab_animation)
-
-    crab_player.speed_obj = int(speed_game*1.2)
+    animation_i = crab_player.animate(animation_i, screen, frame_count)
     
     keys = pg.key.get_pressed()
     crab_player.move(keys)
 
-    screen.blit(fundo, (0,0))
-
     removidos = []
-
     for item in onscreen:
         removidos = remove_obj(removidos, item, crab, screen, counter, crab_player)
-        screen.blit(pg.transform.rotate(item[0], angle+int(item[1].speed)), (item[1].x, item[1].y))
-        item[1].pos_y += item[1].speed
+        item[1].update(screen, pg.transform.rotate(item[0], item[1].obj_angle))
 
-    pitu_counter, bottle_counter, tire_counter = draw_counter(counter)
-    screen.blit(pitu_counter, (25, 20))
-    screen.blit(bottle_counter, (25, 50))
-    screen.blit(tire_counter, (25, 80))
     screen.blit(my_font.render(str((time() - START_TIME)), False, (0,0,0)), (750, 20))
 
-    screen.blit(image_crab, (crab_player.x, crab_player.y))
+    draw_counter(counter, screen)
 
     pg.display.update()
 
