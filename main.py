@@ -5,6 +5,7 @@ from sprite_sheet import sprites_player
 from button import Button_Start, Button_Exit
 from time import time
 from stopwatch import Stopwatch
+from music1 import Music
 
 pg.display.init()
 pg.font.init()
@@ -17,6 +18,8 @@ background_start = pg.transform.scale(background_start, screen.get_size())
 start = Button_Start('graphics/Button_play.png', screen)
 close = Button_Exit('graphics/Button_Exit.png', screen)
 crab = sprites_player
+music_game = Music('musics/chico_science_maracatu_atomico.mp3')
+music_start = Music('musics/start_game.mp3')
 
 clock = pg.time.Clock()
 crab_player = Player(x_screen/2-int(crab[0].get_width()), int(y_screen*0.8125), 4, int(crab[0].get_width()))
@@ -39,14 +42,17 @@ while not running:
         running = True
         START_TIME = time()
         stopwatch = Stopwatch(START_TIME)
+        music_start.play(0)
     elif close.update():
         pg.quit()
         exit()
 
+music_game.play(2)
+
 while running:
 
     screen.blit(background_game, (0,0))
-
+    
     for event in pg.event.get():
         if event.type == pg.QUIT:
             pg.quit()
