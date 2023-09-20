@@ -45,6 +45,9 @@ class Lixo(Positions):
     def update(self, screen, img):
         self.angle += 1
         self.pos_y += self.speed
+        self.draw(screen, img)
+    
+    def draw(self, screen, img):
         screen.blit(img, (self.x, self.y))
 
 
