@@ -53,23 +53,24 @@ def game_diff(frame_count, dificuldade, onscreen):
     return frame_count, dificuldade, onscreen, speed_game
     
 def remove_obj(removidos, item, crab, screen, counter, crab_player):
-    if item[1].y > screen.get_height():
-        removidos.append(item)
-
-    item_rec = item[0].get_rect(topleft = (item[1].x, item[1].y))
-
-    if crab[0].get_rect(topleft = (crab_player.x, crab_player.y)).colliderect(item_rec):
-        if item[1].sprite_id == 0:
-            counter['pitu'] += 1
-        elif item[1].sprite_id == 1:
-            counter['bottle'] += 1
-        else:
-            counter['tire'] += 1
-            
-        print(counter)
-        removidos.append(item)
-    
+  if item[1].y > screen.get_height():
+    removidos.append(item)
     return removidos
+
+  item_rec = item[0].get_rect(topleft=(item[1].x, item[1].y))
+  crab_rec = crab[0].get_rect(topleft=(crab_player.x, crab_player.y))
+
+  if crab_rec.colliderect(item_rec):
+    if item[1].sprite_id == 0:
+      counter['pitu'] += 1
+    elif item[1].sprite_id == 1:
+      counter['bottle'] += 1
+    else:
+      counter['tire'] += 1
+
+    removidos.append(item)
+
+  return removidos
 
 def init_game():
     pg.display.init()
