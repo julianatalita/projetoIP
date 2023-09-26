@@ -28,15 +28,15 @@ Pressione D para mover o caranguejo para a direita.
 - Pygame (você pode instalá-lo com 'pip install pygame')
 
 ## Estrutura do Projeto:
-- main.py: arquivo principal que inicia a execução do jogo;
-- objects.py: contém as classes que repesentam o caranguejo (Player), os lixos e seus comportamentos;
-- functions.py: arquivo que reune funções acessórias usadas em main.py, como o spawn_lixo e draw_counter;
-- stopwatch.py: contém as funções necessárias para exibir o contador de tempo em tela;
-- sprite_sheet.py: contém os sprites principais do personagem, lixos e background;
-- button.py: armazena a classe de botões que são usados na tela inicial;
-- music1.py: contém a classe de música com os métodos de play e pause;
-- graphics/: diretório com recursos gráficos;
-- musics/: diretório com recursos sonoros;
+- main.py: Este é o arquivo principal responsável por iniciar a execução do jogo. Toda a lógica de inicialização e coordenação dos demais módulos é orquestrada a partir deste arquivo.
+- objects.py: Este módulo engloba as classes que representam os diferentes objetos presentes no jogo. Notavelmente, ele incorpora a classe Player, representando o caranguejo, bem como as classes que modelam os lixos e seus respectivos comportamentos.
+- functions.py: Este arquivo congrega funções auxiliares que são invocadas no arquivo principal, main.py. Funções como "spawn_lixo" (para criar instâncias de lixo) e "draw_counter" (para desenhar contadores) são exemplos das rotinas alojadas neste módulo.
+- stopwatch.py: Esse módulo abriga funções essenciais para a operacionalização e exibição do contador de tempo na interface do jogo, permitindo ao usuário ter uma percepção temporal durante sua experiência.
+- sprite_sheet.py: Aqui, são mantidos os sprites, que são representações gráficas bidimensionais, dos principais elementos do jogo, incluindo o personagem, os lixos e o cenário de fundo.
+- button.py: Este módulo armazena a classe responsável pela modelagem dos botões que são apresentados na tela inicial do jogo, fornecendo interatividade ao usuário desde o início de sua jornada.
+- music1.py: Dedicado à sonoridade, este módulo contém a classe que gerencia a música do jogo. Os métodos inclusos permitem executar e pausar as faixas sonoras conforme a interação do usuário e a progressão do jogo.
+- graphics/: Trata-se de um diretório que serve como repositório para os recursos gráficos utilizados no jogo. Nele, são armazenados arquivos de imagem, animações, entre outros.
+- musics/: Similarmente ao diretório de gráficos, este diretório é destinado ao armazenamento de recursos sonoros, incluindo trilhas sonoras, efeitos de som e demais arquivos de áudio necessários para a ambientação sonora do jogo.
 
 Este projeto foi realizado para disciplina de Introdução à Programação no CIn UFPE
 ### Divirta-se jogando MangueBit e ajudando a limpar o mangue!
