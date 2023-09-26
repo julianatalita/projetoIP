@@ -1,4 +1,4 @@
-#### MangueBit - Jogo 2D em Python com Pygame
+# MangueBit - Jogo 2D em Python com Pygame
 
 ## Descrição do Jogo
 MangueBit é um jogo 2D desenvolvido em Python com a biblioteca Pygame. O objetivo do jogo é controlar
@@ -39,6 +39,6 @@ Pressione D para mover o caranguejo para a direita.
 - musics/: diretório com recursos sonoros;
 
 Este projeto foi realizado para disciplina de Introdução à Programação no CIn UFPE
-# Divirta-se jogando MangueBit e ajudando a limpar o mangue!
+### Divirta-se jogando MangueBit e ajudando a limpar o mangue!
 
 
