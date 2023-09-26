@@ -1,5 +1,5 @@
 import pygame as pg
-from functions import draw_counter, game_diff, remove_obj, init_game
+from functions import draw_counter, game_diff, remove_obj, init_game, collide
 from objects import Player
 from sprite_sheet import sprites_player
 from button import Button_Start, Button_Exit
@@ -69,9 +69,18 @@ while running:
     crab_player.move(keys)
 
     removidos = []
+    colididos = []
+    stop_removing = False
     for item in onscreen:
-        removidos = remove_obj(removidos, item, crab, screen, counter, crab_player)
-        item[1].update(screen, pg.transform.rotate(item[0], item[1].obj_angle))
+        if not stop_removing:
+            removidos = remove_obj(removidos, item, screen)
+            if len(removidos) > 0:
+                if crab_player.lose_life() == 0:
+                    running = False
+                stop_removing = True
+            
+            colididos = collide(colididos, counter, crab_player, crab, item)
+            item[1].update(screen, pg.transform.rotate(item[0], item[1].obj_angle))
 
     stopwatch.draw_stopwatch(screen, my_font, x_screen, clock_box)
 
@@ -81,7 +90,10 @@ while running:
 
     for i in removidos:
         onscreen.remove(i)
-        removidos.remove(i)
+
+    for i in colididos:
+        onscreen.remove(i)
+        colididos.remove(i)
 
     frame_count += 1
 

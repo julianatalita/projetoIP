@@ -58,6 +58,7 @@ class Player(Positions):
         super().__init__(pos_x, pos_y)
         self.speed_obj = speed_obj
         self.width = width
+        self.lives = 3
         
     @property
     def x(self):
@@ -74,6 +75,10 @@ class Player(Positions):
     @property
     def player_width(self):
         return self.width
+    
+    @property
+    def _lives(self):
+        return self.lives
 
     def move(self, direcao):
         if direcao[pg.K_d] and self.x < pg.display.get_window_size()[0] - self.player_width:
@@ -94,3 +99,11 @@ class Player(Positions):
             
         screen.blit(sprite_sheet[5][animation_i], (self.x, self.y))
         return animation_i
+    
+    def lose_life(self):
+        self.lives -= 1
+        print(self._lives)
+        return self._lives
+        
+    def game_over(self):
+        return False
