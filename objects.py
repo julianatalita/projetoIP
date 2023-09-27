@@ -92,7 +92,7 @@ class Player(Positions):
     
     def animate(self, animation_i, screen, frame_count):
 
-        self.speed_obj = 1+(int(frame_count/120))
+        self.speed_obj = 1+(int(frame_count/180))
 
         if frame_count % 20 == 0:
             animation_i = (animation_i+1)% len(sprite_sheet[5])

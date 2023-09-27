@@ -1,8 +1,10 @@
 import pygame as pg
 from random import randint
 from objects import Lixo
+from button import Button_Start, Button_Exit
 from sprite_sheet import sprite_sheet
 from math import log2
+from music1 import Music
 
 def spawn_lixo(frame_count):
 
@@ -77,6 +79,7 @@ def init_game():
     pg.display.init()
     x_screen, y_screen = pg.display.Info().current_w, pg.display.Info().current_h
     screen = pg.display.set_mode((int(x_screen/2), int(3*y_screen/4)))
+    pg.display.set_caption('MangueBit')
     x_screen, y_screen = screen.get_size()
 
     clock = pg.time.Clock()
@@ -91,6 +94,30 @@ def init_game():
     crab_animation = 0
     return x_screen, y_screen, screen, clock, frame_count, onscreen, counter, dificuldade, running, angle, crab_animation
 
+def init_sprites(screen, sprites_player):
+
+  background_game = pg.image.load('graphics/swamp.png')
+  background_start = pg.image.load('graphics/Background.png')
+  background_start = pg.transform.scale(background_start, screen.get_size())
+
+  counter_box = pg.image.load('graphics/counter_background.png')
+  clock_box = pg.image.load('graphics/clock_background.png')
+
+  heart = pg.image.load('graphics/heart.png')
+  heart = pg.transform.scale(heart, (30,30))
+  heart_lost = pg.image.load('graphics/heart_lost.png')
+  heart_lost = pg.transform.scale(heart_lost, (30,30))
+
+  start = Button_Start('graphics/Button_play.png', screen)
+  close = Button_Exit('graphics/Button_Exit.png', screen)
+  crab = sprites_player
+  pg.display.set_icon(crab[0])
+
+  music_game = Music('musics/chico_science_maracatu_atomico.mp3')
+  music_start = Music('musics/start_game.mp3')
+
+  return background_game, background_start, counter_box, clock_box, heart, heart_lost, start, close, crab, music_game, music_start
+
 def draw_heart(image_on, image_off, lives, screen):
   x_screen = screen.get_width()
   for c in range(3):
@@ -99,5 +126,5 @@ def draw_heart(image_on, image_off, lives, screen):
     else:
       screen.blit(image_off, ((x_screen) * 9/10 - 68 + 40 * c, 75)) 
 
-   
+
   
