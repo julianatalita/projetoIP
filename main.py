@@ -1,5 +1,5 @@
 import pygame as pg
-from functions import draw_counter, game_diff, remove_obj, init_game, collide
+from functions import draw_counter, game_diff, remove_obj, init_game, collide, draw_heart
 from objects import Player
 from sprite_sheet import sprites_player
 from button import Button_Start, Button_Exit
@@ -17,6 +17,10 @@ background_start = pg.image.load('graphics/Background.png')
 background_start = pg.transform.scale(background_start, screen.get_size())
 counter_box = pg.image.load('graphics/counter_background.png')
 clock_box = pg.image.load('graphics/clock_background.png')
+heart = pg.image.load('graphics/heart.png')
+heart = pg.transform.scale(heart, (30,30))
+heart_lost = pg.image.load('graphics/heart_lost.png')
+heart_lost = pg.transform.scale(heart_lost, (30,30))
 start = Button_Start('graphics/Button_play.png', screen)
 close = Button_Exit('graphics/Button_Exit.png', screen)
 crab = sprites_player
@@ -85,7 +89,7 @@ while running:
     stopwatch.draw_stopwatch(screen, my_font, x_screen, clock_box)
 
     draw_counter(counter, screen, counter_box)
-
+    draw_heart(heart, heart_lost, crab_player._lives,screen)
     pg.display.update()
 
     for i in removidos:

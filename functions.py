@@ -90,3 +90,14 @@ def init_game():
     angle = 0
     crab_animation = 0
     return x_screen, y_screen, screen, clock, frame_count, onscreen, counter, dificuldade, running, angle, crab_animation
+
+def draw_heart(image_on, image_off, lives, screen):
+  x_screen = screen.get_width()
+  for c in range(3):
+    if c + 1 <= lives:
+      screen.blit(image_on, ((x_screen) * 9/10 - 68 + 40 * c, 75))
+    else:
+      screen.blit(image_off, ((x_screen) * 9/10 - 68 + 40 * c, 75)) 
+
+   
+  
