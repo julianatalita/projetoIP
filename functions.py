@@ -115,7 +115,7 @@ def init_sprites(screen, sprites_player):
   play_again = Button_Play_Again('graphics/Button_play_again.png', screen)
 
   crab = sprites_player
-  pg.display.set_icon(crab[0])
+  pg.display.set_icon(crab[-1])
 
   music_game = Music('musics/chico_science_maracatu_atomico.mp3')
   music_start = Music('musics/start_game.mp3')
