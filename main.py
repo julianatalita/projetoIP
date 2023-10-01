@@ -107,7 +107,7 @@ while running:
                 crab_player.restart()
                 onscreen = []
                 
-                frame_count = 0
+                frame_count = -1
                 counter = Points_Counter()
                 
                 music_game.play(0)
