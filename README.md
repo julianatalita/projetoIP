@@ -54,7 +54,8 @@ uma vida é descontada. O lixo só é coletado quando colide com o caranguejo.
 
 
 ## Ferramentas utilizadas:
-Bibliotecas:
+
+Módulos:
 
 Functions (from functions import ...):
 Propósito: Um módulo personalizado que contém várias funções de utilidade para o jogo, como game_diff, init_game, draw_heart e assim por diante.
@@ -76,10 +77,6 @@ Propósito: Módulo personalizado para lidar com botões na interface do jogo.
 Justificativa: Isolar a lógica dos botões em classes distintas torna mais fácil de gerenciar sua funcionalidade e aparência.
 
 
-time (from time import time):
-Propósito: 'time' é uma biblioteca padrão em Python que fornece funções relacionadas ao tempo. Aqui, a função time é usada para a utilização de um crônometro.
-Justificativa: No jogo, usamos o crônometro para medir o tempo de sobrevivência do jogador.
-
 
 counters (from counters import Stopwatch, Points_Counter):
 Propósito: Módulo personalizado que lida com a contagem e exibição de pontos e tempo.
@@ -91,9 +88,15 @@ Propósito: Módulo personalizado que paree lida com a reprodução e controle d
 Justificativa: Ter uma classe dedicada à música permite controlar facilmente a reprodução dos sons no jogo.
 
 
+Biblioteca:
+
 A biblioteca pygame foi empregada como a principal ferramenta para o desenvolvimento da interface gráfica e da dinâmica de um jogo. Através dela, a interface de exibição foi inicializada, permitindo a renderização de elementos gráficos como imagens de fundo, sprites e botões. Além disso, ela é usada para detectar e gerenciar eventos de interação do usuário, como pressionamentos de teclas e operações de fechamento de janelas do jogo. A biblioteca também monitora o tempo do jogo e usa um relógio que ajuda a determinar a taxa de atualização para garantir que o jogo seja executado em uma velocidade consistente.
 A utilização do pygame se justifica por fornecer uma ampla gama de funcionalidades básicas para o desenvolvimento de jogos de forma simples e eficaz. Dada a natureza gráfica e interativa do projeto, era crucial ter uma biblioteca que pudesse lidar de forma integrada com gráficos, som e interação do usuário. Pygame, uma das bibliotecas de desenvolvimento de jogos mais populares em Python, fornece esses recursos e se considera uma escolha lógica para sanar as necessidades de codificação relacionadas. É, pois, a espinha dorsal desse projeto.
 
+
+time (from time import time):
+Propósito: 'time' é uma biblioteca padrão em Python que fornece funções relacionadas ao tempo. Aqui, a função time é usada para a utilização de um crônometro.
+Justificativa: No jogo, usamos o crônometro para medir o tempo de sobrevivência do jogador.
 
 
 
@@ -101,7 +104,6 @@ Aplicativos e Sites:
 Entre as ferramentas utilizadas para o desenvolvimento do projeto, se encontram : Vscode, Discord, Notion, Figma, Aseprite, Canva, Pixabay e Github. O Vscode, em conjunto com o Github, foi utilizado para todo o desenvolvimento do código do jogo, através da criação de um repositório em que todos os membros da equipe possuíam acesso para atualizar o código.
 Para o planejamento e acompanhamento do progresso do projeto, foi utilizado um canal no Discord para realizar as reuniões remotas, e o Notion para o planejamento inicial da base do jogo.
 A arte do Manguebit foi criada por meio do Figma e Aseprite, plataformas que permitem a utilização de pixel art no desenvolvimento de sprites. No âmbito sonoro, foi através do Pixabay que se obteve o efeito sonoro que aparece assim que o jogador clica em “start”.
-
 
 
 
@@ -152,7 +154,7 @@ Questões técnicas:
     Preparo da tela final
     Correção de código e revisão de classes. 
 
-    
+
 - Walfrido Saturno
     Criação da engine do jogo;
     Criação das classes do lixo e do player;
