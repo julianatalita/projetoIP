@@ -16,7 +16,7 @@ x_screen, y_screen, screen, clock, frame_count, onscreen, dificuldade, running, 
 background_game, background_start, counter_box, clock_box, heart, heart_lost, start, close, crab, music_game, music_start, background_finished, play_again = init_sprites(screen, sprites_player)
 
 clock = pg.time.Clock()
-crab_player = Player(x_screen/2-int(crab[0].get_width()), int(y_screen*0.8125), 4, int(crab[0].get_width()))
+crab_player = Player(x_screen/2-int(crab[0].get_width())//2, int(y_screen*0.8125), 4, int(crab[0].get_width()))
 
 my_font = pg.font.SysFont('arial', 36)
 
@@ -103,7 +103,7 @@ while running:
                 stopwatch = Stopwatch(START_TIME)
 
                 esc = False
-                
+
                 crab_player.restart()
                 onscreen = []
                 
