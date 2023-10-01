@@ -19,27 +19,6 @@ def spawn_lixo(frame_count):
 
     return [sprite_sheet[obj.sprite_id], obj]
 
-def draw_counter(counter, screen, image_background):
-
-    pg.font.init()
-    fonte = pg.font.Font(None, 30)
-    color_font = (255,255,255)
-    
-    pitu_counter = fonte.render(f'Pitus: ' + str(counter['pitu']), True, color_font)
-    
-    bottle_counter = fonte.render(f'Garrafas: ' + str(counter['bottle']), True, color_font)
-    
-    tire_counter = fonte.render(f'Pneus: ' + str(counter['tire']), True, color_font)
- 
-    screen.blit(image_background, (5,10))
-    screen.blit(pitu_counter, (25,25))
-
-    screen.blit(image_background, (5,50))
-    screen.blit(bottle_counter, (25, 65))
-
-    screen.blit(image_background, (5,90))
-    screen.blit(tire_counter, (25, 105))
-
 def game_diff(frame_count, dificuldade, onscreen):
 
     speed_game = int(log2(4 + int(frame_count/300)))
@@ -59,22 +38,6 @@ def remove_obj(removidos, item, screen):
     removidos.append(item)
   return removidos
 
-def collide(colididos, counter, crab_player, crab, item):
-  item_rec = item[0].get_rect(topleft=(item[1].x, item[1].y))
-  crab_rec = crab[0].get_rect(topleft=(crab_player.x, crab_player.y))
-
-  if crab_rec.colliderect(item_rec):
-    if item[1].sprite_id == 0:
-      counter['pitu'] += 1
-    elif item[1].sprite_id == 1:
-      counter['bottle'] += 1
-    else:
-      counter['tire'] += 1
-
-    colididos.append(item)
-
-  return colididos
-
 def init_game():
     pg.display.init()
     x_screen, y_screen = pg.display.Info().current_w, pg.display.Info().current_h
@@ -87,12 +50,11 @@ def init_game():
     frame_count = 0
 
     onscreen = []
-    counter = {'pitu': 0, 'bottle': 0, 'tire': 0}
     dificuldade = 1
     running = False
     angle = 0
     crab_animation = 0
-    return x_screen, y_screen, screen, clock, frame_count, onscreen, counter, dificuldade, running, angle, crab_animation
+    return x_screen, y_screen, screen, clock, frame_count, onscreen, dificuldade, running, angle, crab_animation
 
 def init_sprites(screen, sprites_player):
 
@@ -142,9 +104,7 @@ def dark_screen(surface, wid, height, alpha=150):
 def finish(lives, stopwatch, time, counter, music):
   if lives == 0:
     time_record = time - stopwatch._start_time
-    points = 0
-    for v in counter.values():
-        points += v
+    points = counter.pitu + counter.bottle + counter.tire
     music.pause()
     
     return [True, time_record, points]

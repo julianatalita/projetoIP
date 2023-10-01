@@ -64,4 +64,3 @@ class Button_Play_Again(Button):
 
     def check_if_click(self):
         return super().check_if_click()
-        
