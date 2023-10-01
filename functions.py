@@ -136,3 +136,16 @@ def dark_screen(surface, wid, height, alpha=150):
     overlay = pg.Surface((wid, height), pg.SRCALPHA)
     overlay.fill((0, 0, 0, alpha))
     surface.blit(overlay, (0, 0))
+    
+
+def finish(lives, stopwatch, time, counter, music):
+  if lives == 0:
+    time_record = time - stopwatch._start_time
+    points = 0
+    for v in counter.values():
+        points += v
+    print(f'{time_record:.2f}')
+    print(counter, points)
+    music.pause()
+    
+    return True
