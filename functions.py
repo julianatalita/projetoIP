@@ -1,7 +1,7 @@
 import pygame as pg
 from random import randint
 from objects import Lixo
-from button import Button_Start, Button_Exit
+from button import Button_Start, Button_Exit, Button_Play_Again
 from sprite_sheet import sprite_sheet
 from math import log2
 from music1 import Music
@@ -111,13 +111,17 @@ def init_sprites(screen, sprites_player):
 
   start = Button_Start('graphics/Button_play.png', screen)
   close = Button_Exit('graphics/Button_Exit.png', screen)
+  play_again = Button_Play_Again('graphics/Button_play_again.png', screen)
+
   crab = sprites_player
   pg.display.set_icon(crab[0])
 
   music_game = Music('musics/chico_science_maracatu_atomico.mp3')
   music_start = Music('musics/start_game.mp3')
 
-  return background_game, background_start, counter_box, clock_box, heart, heart_lost, start, close, crab, music_game, music_start
+ 
+
+  return background_game, background_start, counter_box, clock_box, heart, heart_lost, start, close, crab, music_game, music_start, play_again
 
 def draw_heart(image_on, image_off, lives, screen):
   x_screen = screen.get_width()
