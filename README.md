@@ -111,15 +111,51 @@ A tomada de decisão no que se diz em relação à dinâmica do jogo, bem como a
 
 Questões técnicas:
 - Artur Couto:
-    Design do caranguejo, implementação do stopwatch, criação do Notion, do grupo do WhatsApp, responsável pelo relatório, design do background, otimização do código sobre as colisões, revisão e otimização de algumas functions.
+    Design do caranguejo;
+    Implementação do stopwatch; 
+    Criação do Notion;
+    Criação do grupo do WhatsApp;
+    Responsável pelo relatório;
+    Design do background;
+    Otimização do código sobre as colisões;
+    Revisão e otimização de algumas functions.
 - Juliana Talita:
-    Criação da logica dos contadores, bem como sua respectiva implementação na tela, criação das logicas das vidas e suas funções correlacionadas, implementação da musica, download da musica, animação do carangueijo, implementação do spawn de diferentes tipos de lixos, implementação dos assets, design e implementação das vidas, artes do botoes, criação dos slides pelo Canva.
+    Criação da logica dos contadores, bem como sua respectiva implementação na tela;
+    Criação das lógicas das vidas e suas funções correlacionadas;
+    Implementação da musica;
+    Download da musica;
+    Animação do carangueijo;
+    Implementação do spawn de diferentes tipos de lixos;
+    Implementação dos assets;
+    Design e implementação das vidas;
+    Artes do botões;
+    Criação dos slides pelo Canva.
 - Luana Queiroz:
-    Implementação da tela inicial, juntamente com a criação do módulo button.py, contendo a classe dos botões da tela de início, criação do servidor do Discord, responsável pelo relatório, auxílio no desenvolvimento das artes do jogo, desenho dos objetos, optimização dos objetos.
+    Implementação da tela inicial, juntamente com a criação do módulo button.py, contendo a classe dos botões da tela de início;
+    Criação do servidor do Discord;
+    Responsável pelo relatório;
+    Auxílio no desenvolvimento das artes do jogo
+    Desenho dos objetos
+    Optimização dos objetos.
 - Lucas Carvalho
-    Criação do contador de lixos coletados, bem como sua implementação na tela, criação das classes jogador, botão de início, botão QUIT e contador de lixo, criação das vidas do jogo, preparo da tela final, correção de código e revisão de classes. 
+    Criação do contador de lixos coletados, bem como sua implementação na tela;
+    Criação das classes jogador, botão de início, botão QUIT e contador de lixo,
+    Criação das vidas do jogo
+    Preparo da tela final
+    Correção de código e revisão de classes. 
 - Walfrido Saturno
-    Criação da engine do jogo, criação das classes do lixo e do player, criação das funções basicas do jogo (queda dos objetos, movimentação do caranguejo, spawn dos sobjetos, etc), adição de funcionalidades de animação de sprites para o player e de rotação para os lixos, criação do nivel de dificuldade em função do tempo, optimização da main, correção de buggs no display, ajuste dos recursos.
+    Criação da engine do jogo;
+    Criação das classes do lixo e do player;
+    Criação das funções basicas do jogo (queda dos objetos, movimentação do caranguejo, spawn dos sobjetos, etc);
+    Adição de funcionalidades de animação de sprites para o player e de rotação para os lixos;
+    Criação do nivel de dificuldade em função do tempo;
+    Optimização da main;
+    Correção de buggs no display;
+    Ajuste dos recursos.
+
+
+
+
 ## Controles
 Pressione A para mover o caranguejo para a esquerda.
 Pressione D para mover o caranguejo para a direita.
