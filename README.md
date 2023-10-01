@@ -110,6 +110,8 @@ A arte do Manguebit foi criada por meio do Figma e Aseprite, plataformas que per
 A tomada de decisão no que se diz em relação à dinâmica do jogo, bem como a escolha do tema, da interface, da lógica do jogo, das regras,ideias, features, personagens e etc foi feita conjuntamente com participação ativa de todos os membros da equipe. Todos opinaram, votaram, tiveram suas escolhas levadas em consideração durante o processo idealizatorio e criativo.
 
 Questões técnicas:
+
+
 - Artur Couto:
     Design do caranguejo;
     Implementação do stopwatch; 
@@ -119,6 +121,8 @@ Questões técnicas:
     Design do background;
     Otimização do código sobre as colisões;
     Revisão e otimização de algumas functions.
+
+
 - Juliana Talita:
     Criação da logica dos contadores, bem como sua respectiva implementação na tela;
     Criação das lógicas das vidas e suas funções correlacionadas;
@@ -130,6 +134,8 @@ Questões técnicas:
     Design e implementação das vidas;
     Artes do botões;
     Criação dos slides pelo Canva.
+
+
 - Luana Queiroz:
     Implementação da tela inicial, juntamente com a criação do módulo button.py, contendo a classe dos botões da tela de início;
     Criação do servidor do Discord;
@@ -137,12 +143,16 @@ Questões técnicas:
     Auxílio no desenvolvimento das artes do jogo
     Desenho dos objetos
     Optimização dos objetos.
+
+
 - Lucas Carvalho
     Criação do contador de lixos coletados, bem como sua implementação na tela;
     Criação das classes jogador, botão de início, botão QUIT e contador de lixo,
     Criação das vidas do jogo
     Preparo da tela final
     Correção de código e revisão de classes. 
+
+    
 - Walfrido Saturno
     Criação da engine do jogo;
     Criação das classes do lixo e do player;
