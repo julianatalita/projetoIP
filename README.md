@@ -39,6 +39,7 @@ uma vida é descontada. O lixo só é coletado quando colide com o caranguejo.
 
 
 ## Estrutura do Projeto:
+
 - main.py: Este é o arquivo principal responsável por iniciar a execução do jogo. Toda a lógica de inicialização e coordenação dos demais módulos é orquestrada a partir deste arquivo.
 - objects.py: Este módulo engloba as classes que representam os diferentes objetos presentes no jogo. Notavelmente, ele incorpora a classe Player, representando o caranguejo, bem como as classes que modelam os lixos e seus respectivos comportamentos.
 - functions.py: Este arquivo congrega funções auxiliares que são invocadas no arquivo principal, main.py. Funções como "spawn_lixo" (para criar instâncias de lixo) e "draw_counter" (para desenhar contadores) são exemplos das rotinas alojadas neste módulo.
@@ -115,8 +116,8 @@ Questões técnicas:
     Criação da logica dos contadores, bem como sua respectiva implementação na tela, criação das logicas das vidas e suas funções correlacionadas, implementação da musica, download da musica, animação do carangueijo, implementação do spawn de diferentes tipos de lixos, implementação dos assets, design e implementação das vidas, artes do botoes, criação dos slides pelo Canva.
 - Luana Queiroz:
     Implementação da tela inicial, juntamente com a criação do módulo button.py, contendo a classe dos botões da tela de início, criação do servidor do Discord, responsável pelo relatório, auxílio no desenvolvimento das artes do jogo, desenho dos objetos, optimização dos objetos.
-- ucas Carvalho
-    me estressou
+- Lucas Carvalho
+    Criação do contador de lixos coletados, bem como sua implementação na tela, criação das classes jogador, botão de início, botão QUIT e contador de lixo, criação das vidas do jogo, preparo da tela final, correção de código e revisão de classes. 
 - Walfrido Saturno
     Criação da engine do jogo, criação das classes do lixo e do player, criação das funções basicas do jogo (queda dos objetos, movimentação do caranguejo, spawn dos sobjetos, etc), adição de funcionalidades de animação de sprites para o player e de rotação para os lixos, criação do nivel de dificuldade em função do tempo, optimização da main, correção de buggs no display, ajuste dos recursos.
 ## Controles
