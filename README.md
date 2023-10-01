@@ -23,8 +23,14 @@ uma vida é descontada. O lixo só é coletado quando colide com o caranguejo.
 
 
 ## Capturas de Tela
-![captura_de_tela_2](https://github.com/julianatalita/projetoIP/assets/136331050/76a1834c-75f9-40ea-9d91-fd44296db0e0)
-![captura_de_tela_1](https://github.com/julianatalita/projetoIP/assets/136331050/1d3c6e4f-0ccb-46a3-9f5d-509af66a25e2)
+### Tela inicial do jogo
+![Tela de inicio](https://github.com/julianatalita/projetoIP/assets/136331050/76a1834c-75f9-40ea-9d91-fd44296db0e0)
+
+### Jogabilidade
+![Jogo](https://github.com/julianatalita/projetoIP/assets/136331050/1d3c6e4f-0ccb-46a3-9f5d-509af66a25e2)
+
+### Tela final do jogo
+![Tela Final](https://github.com/julianatalita/projetoIP/assets/136331050/00f035f2-3aba-44fb-8ab1-9fc5562123dd)
 
 
 
@@ -113,17 +119,17 @@ Questões técnicas:
     Implementação da tela inicial, juntamente com a criação do módulo button.py, contendo a classe dos botões da tela de início;
     Criação do servidor do Discord;
     Responsável pelo relatório;
-    Auxílio no desenvolvimento das artes do jogo
-    Desenho dos objetos
+    Auxílio no desenvolvimento das artes do jogo;
+    Desenho dos objetos;
     Optimização dos objetos.
 
 
 - Lucas Carvalho
     Criação do contador de lixos coletados, bem como sua implementação na tela;
     Criação das classes jogador, botão de início, botão QUIT e contador de lixo,
-    Criação das vidas do jogo
-    Preparo da tela final
-    Correção de código e revisão de classes. 
+    Criação das vidas do jogo;
+    Preparo da tela final;
+    Correções de código e revisão de classes. 
 
 
 - Walfrido Saturno
