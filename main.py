@@ -1,5 +1,5 @@
 import pygame as pg
-from functions import draw_counter, game_diff, remove_obj, init_game, init_sprites, collide, draw_heart, dark_screen, finish
+from functions import draw_counter, game_diff, remove_obj, init_game, init_sprites, collide, draw_heart, dark_screen, finish, draw_finish
 from objects import Player
 from sprite_sheet import sprites_player
 from button import Button_Start, Button_Exit
@@ -12,7 +12,7 @@ pg.font.init()
 
 x_screen, y_screen, screen, clock, frame_count, onscreen, counter, dificuldade, running, angle, animation_i = init_game()
 
-background_game, background_start, counter_box, clock_box, heart, heart_lost, start, close, crab, music_game, music_start, play_again = init_sprites(screen, sprites_player)
+background_game, background_start, counter_box, clock_box, heart, heart_lost, start, close, crab, music_game, music_start, background_finished, play_again = init_sprites(screen, sprites_player)
 
 clock = pg.time.Clock()
 crab_player = Player(x_screen/2-int(crab[0].get_width()), int(y_screen*0.8125), 4, int(crab[0].get_width()))
@@ -72,7 +72,7 @@ while running:
             item[1].update(screen, pg.transform.rotate(item[0], item[1].obj_angle))
         if len(removidos) > 0:
             lives = crab_player.lose_life() 
-            esc = finish(lives, stopwatch, time(), counter, music_game)
+            esc, time_record, points = finish(lives, stopwatch, time(), counter, music_game)
 
         stopwatch.draw_stopwatch(screen, my_font, x_screen, clock_box)
 
@@ -87,6 +87,7 @@ while running:
         screen.blit(background_game, (0,0))
         animation_i = crab_player.animate(animation_i, screen, frame_count)
         dark_screen(screen, x_screen, y_screen)
+        draw_finish(screen, background_finished, x_screen, y_screen, points, time_record)
 
     pg.display.update()
 

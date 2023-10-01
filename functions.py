@@ -100,6 +100,7 @@ def init_sprites(screen, sprites_player):
   background_game = pg.transform.scale(background_game, screen.get_size())
   background_start = pg.image.load('graphics/Background.png')
   background_start = pg.transform.scale(background_start, screen.get_size())
+  background_finished = pg.image.load('graphics/Background_finish.png')
 
   counter_box = pg.image.load('graphics/counter_background.png')
   clock_box = pg.image.load('graphics/clock_background.png')
@@ -121,7 +122,7 @@ def init_sprites(screen, sprites_player):
 
  
 
-  return background_game, background_start, counter_box, clock_box, heart, heart_lost, start, close, crab, music_game, music_start, play_again
+  return background_game, background_start, counter_box, clock_box, heart, heart_lost, start, close, crab, music_game, music_start, background_finished, play_again
 
 def draw_heart(image_on, image_off, lives, screen):
   x_screen = screen.get_width()
@@ -144,8 +145,23 @@ def finish(lives, stopwatch, time, counter, music):
     points = 0
     for v in counter.values():
         points += v
-    print(f'{time_record:.2f}')
-    print(counter, points)
     music.pause()
     
-    return True
+    return [True, time_record, points]
+  else:
+    return [False, None, None]
+  
+
+def draw_finish(screen, background_finished, x_screen, y_screen, points, time_record):
+  pg.font.init()
+  font_points = pg.font.Font(None, 70)
+  font_time = pg.font.Font(None, 57)
+  color_font = (255,255,255)
+  
+  screen.blit(background_finished, (x_screen//2 - background_finished.get_width()//2, y_screen//2 - background_finished.get_height()//2))
+  
+  text_points_record = font_points.render(f'{points}', True, color_font)
+  screen.blit(text_points_record, (x_screen//2 - text_points_record.get_width()//2, y_screen//2))
+  
+  text_time_record = font_time.render(f'{time_record:.2f}s', True, color_font)
+  screen.blit(text_time_record, (x_screen//2 + 32, y_screen//2 + 134))
