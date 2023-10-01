@@ -53,13 +53,13 @@ class Lixo(Positions):
 
 class Player(Positions):
 
-    # O player por enquanto é só x, y e largura dele
     def __init__(self, pos_x, pos_y, speed_obj, width):
         super().__init__(pos_x, pos_y)
         self.speed_obj = speed_obj
         self.width = width
         self.lives = 3
-        
+        self.default_tuple = (pos_x, pos_y, speed_obj, width, 3)
+
     @property
     def x(self):
         return self.pos_x
@@ -92,7 +92,7 @@ class Player(Positions):
     
     def animate(self, animation_i, screen, frame_count):
 
-        self.speed_obj = 1+(int(frame_count/180))
+        self.speed_obj = 4+(int(frame_count/180))
 
         if frame_count % 20 == 0:
             animation_i = (animation_i+1)% len(sprite_sheet[5])
@@ -107,3 +107,10 @@ class Player(Positions):
         
     def game_over(self):
         return False
+
+    def restart(self):
+        self.pos_x = self.default_tuple[0]
+        self.pos_y = self.default_tuple[1]
+        self.speed_obj = self.default_tuple[2]
+        self.width = self.default_tuple[3]
+        self.lives = self.default_tuple[4]
