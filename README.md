@@ -1,10 +1,11 @@
 
 # MangueBit - Jogo 2D em Python com Pygame
-##Membros da Equipe:
--Artur Couto
--Juliana Talita
--Luana Queiroz
--Lucas Carvalho
+
+## Membros da Equipe:
+- Artur Couto
+- Juliana Talita
+- Luana Queiroz
+- Lucas Carvalho
 - Walfrido Saturno
 
 
