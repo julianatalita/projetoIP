@@ -22,6 +22,13 @@ uma vida é descontada. O lixo só é coletado quando colide com o caranguejo.
 
 
 
+## Capturas de Tela
+![captura_de_tela_2](https://github.com/julianatalita/projetoIP/assets/136331050/76a1834c-75f9-40ea-9d91-fd44296db0e0)
+![captura_de_tela_1](https://github.com/julianatalita/projetoIP/assets/136331050/1d3c6e4f-0ccb-46a3-9f5d-509af66a25e2)
+
+
+
+
 ## Estrutura do Projeto:
 
 - main.py: Este é o arquivo principal responsável por iniciar a execução do jogo. Toda a lógica de inicialização e coordenação dos demais módulos é orquestrada a partir deste arquivo.
