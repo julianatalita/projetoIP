@@ -13,7 +13,6 @@ class Positions(ABC):
 
 class Lixo(Positions):
 
-    # Iniciar com x, y, id e velocidade
     def __init__(self, pos_x, pos_y, id, frame_count):
         super().__init__(pos_x, pos_y)
         self.id = id
@@ -102,7 +101,6 @@ class Player(Positions):
     
     def lose_life(self):
         self.lives -= 1
-        print(self._lives)
         return self._lives
         
     def game_over(self):
