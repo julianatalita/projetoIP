@@ -16,7 +16,7 @@
 ## Descrição do Jogo
 MangueBit é um jogo 2D desenvolvido em Python com a biblioteca Pygame. O objetivo do jogo é controlar
 um caranguejo e limpar o máximo de lixo possível do mangue, que está infestado com três tipos de lixo:
-Pitú, Garrafa e Pneu. Cada vez que um pedaço de lixo passa direto pelo caranguejo sem ser coletado,
+Latinhas de Pitú, Garrafas de água e Pneus. Cada vez que um pedaço de lixo passa direto pelo caranguejo sem ser coletado,
 uma vida é descontada. O lixo só é coletado quando colide com o caranguejo.
 
 
@@ -38,10 +38,10 @@ uma vida é descontada. O lixo só é coletado quando colide com o caranguejo.
 ## Estrutura do Projeto:
 
 - main.py: Este é o arquivo principal responsável por iniciar a execução do jogo. Toda a lógica de inicialização e coordenação dos demais módulos é orquestrada a partir deste arquivo.
-- objects.py: Este módulo engloba as classes que representam os diferentes objetos presentes no jogo. Notavelmente, ele incorpora a classe Player, representando o caranguejo, bem como as classes que modelam os lixos e seus respectivos comportamentos.
-- functions.py: Este arquivo congrega funções auxiliares que são invocadas no arquivo principal, main.py. Funções como "spawn_lixo" (para criar instâncias de lixo) e "draw_counter" (para desenhar contadores) são exemplos das rotinas alojadas neste módulo.
+- objects.py: Este módulo engloba as classes que representam os diferentes objetos presentes no jogo. Ele incorpora a classe Player, representando o caranguejo, e também as classes que modelam os lixos e seus respectivos comportamentos.
+- functions.py: Este arquivo congrega funções auxiliares que são invocadas no arquivo principal, o main.py. Funções como "spawn_lixo" (para criar instâncias de lixo) e "draw_counter" (para desenhar contadores) são exemplos das rotinas alojadas neste módulo.
 - stopwatch.py: Esse módulo abriga funções essenciais para a operacionalização e exibição do contador de tempo na interface do jogo, permitindo ao usuário ter uma percepção temporal durante sua experiência.
-- sprite_sheet.py: Aqui, são mantidos os sprites, que são representações gráficas bidimensionais, dos principais elementos do jogo, incluindo o personagem, os lixos e o cenário de fundo.
+- sprite_sheet.py: Aqui, são mantidos os sprites, que são representações gráficas bidimensionais dos principais elementos do jogo, incluindo o personagem, os lixos e o cenário de fundo.
 - button.py: Este módulo armazena a classe responsável pela modelagem dos botões que são apresentados na tela inicial do jogo, fornecendo interatividade ao usuário desde o início de sua jornada.
 - music1.py: Dedicado à sonoridade, este módulo contém a classe que gerencia a música do jogo. Os métodos incluídos permitem executar e pausar as faixas sonoras conforme a interação do usuário e a progressão do jogo.
 - graphics/: Trata-se de um diretório que serve como repositório para os recursos gráficos utilizados no jogo. Nele, são armazenados arquivos de imagem, animações, entre outros.
@@ -52,18 +52,15 @@ uma vida é descontada. O lixo só é coletado quando colide com o caranguejo.
 
 ## Ferramentas utilizadas:
 
-Biblioteca:
+### Bibliotecas:
 
-A biblioteca pygame foi empregada como a principal ferramenta para o desenvolvimento da interface gráfica e da dinâmica de um jogo. Através dela, a interface de exibição foi inicializada, permitindo a renderização de elementos gráficos como imagens de fundo, sprites e botões. Além disso, ela é usada para detectar e gerenciar eventos de interação do usuário, como pressionamentos de teclas e operações de fechamento de janelas do jogo. A biblioteca também monitora o tempo do jogo e usa um relógio que ajuda a determinar a taxa de atualização para garantir que o jogo seja executado em uma velocidade consistente.
+A biblioteca 'pygame' foi empregada como a principal ferramenta para o desenvolvimento da interface gráfica e da dinâmica de um jogo. Através dela, a interface de exibição foi inicializada, permitindo a renderização de elementos gráficos como imagens de fundo, sprites e botões. Além disso, ela é usada para detectar e gerenciar eventos de interação do usuário, como pressionamentos de teclas e operações de fechamento de janelas do jogo. A biblioteca também monitora o tempo do jogo e usa um relógio que ajuda a determinar a taxa de atualização para garantir que o jogo seja executado em uma velocidade consistente.
 A utilização do pygame se justifica por fornecer uma ampla gama de funcionalidades básicas para o desenvolvimento de jogos de forma simples e eficaz. Dada a natureza gráfica e interativa do projeto, era crucial ter uma biblioteca que pudesse lidar de forma integrada com gráficos, som e interação do usuário. Pygame, uma das bibliotecas de desenvolvimento de jogos mais populares em Python, fornece esses recursos e se considera uma escolha lógica para sanar as necessidades de codificação relacionadas. É, pois, a espinha dorsal desse projeto.
 
 
-time (from time import time):
-Propósito: 'time' é uma biblioteca padrão em Python que fornece funções relacionadas ao tempo. Aqui, a função time é usada para a utilização de um crônometro.
-Justificativa: No jogo, usamos o crônometro para medir o tempo de sobrevivência do jogador.
+A biblioteca 'time' é uma biblioteca padrão em Python que fornece funções relacionadas ao tempo. Aqui, a função time é necessária para a utilização do crônometro que mede o tempo de sobrevivência do jogador.
 
-
-
+### Ferramentas:
 Aplicativos e Sites:
 Entre as ferramentas utilizadas para o desenvolvimento do projeto, se encontram : Vscode, Discord, Notion, Figma, Aseprite, Canva, Pixabay e Github. O Vscode, em conjunto com o Github, foi utilizado para todo o desenvolvimento do código do jogo, através da criação de um repositório em que todos os membros da equipe possuíam acesso para atualizar o código.
 Para o planejamento e acompanhamento do progresso do projeto, foi utilizado um canal no Discord para realizar as reuniões remotas, e o Notion para o planejamento inicial da base do jogo.
@@ -87,7 +84,7 @@ O jogo usa orientação a objetos, como pode ser visto com a classe Player, e a 
 
 
 ## Divisão de Trabalhos:
-A tomada de decisão no que se diz em relação à dinâmica do jogo, bem como a escolha do tema, da interface, da lógica do jogo, das regras, ideias, features, personagens e etc foi feita conjuntamente com participação ativa de todos os membros da equipe. Todos opinaram, votaram, tiveram suas escolhas levadas em consideração durante o processo idealizatorio e criativo.
+A tomada de decisões no que se diz em relação à dinâmica do jogo, bem como a escolha do tema, da interface, da lógica do jogo, das regras, ideias, features, personagens e etc foi feita conjuntamente com participação ativa de todos os membros da equipe. Todos opinaram, votaram, e tiveram suas escolhas levadas em consideração durante o processo idealizatorio e criativo.
 
 Questões técnicas:
 
@@ -124,7 +121,7 @@ Questões técnicas:
     Optimização dos objetos.
 
 
-- Lucas Carvalho
+- Lucas Carvalho:
     Criação do contador de lixos coletados, bem como sua implementação na tela;
     Criação das classes jogador, botão de início, botão QUIT e contador de lixo,
     Criação das vidas do jogo;
@@ -132,7 +129,7 @@ Questões técnicas:
     Correções de código e revisão de classes. 
 
 
-- Walfrido Saturno
+- Walfrido Saturno:
     Criação da engine do jogo;
     Criação das classes do lixo e do player;
     Criação das funções basicas do jogo (queda dos objetos, movimentação do caranguejo, spawn dos sobjetos, etc);
