@@ -75,11 +75,22 @@ A arte do Manguebit foi criada por meio do Figma e Aseprite, plataformas que per
 
 
 
+## Conceitos aprendidos durante a disciplina utilizados no jogo
+
+Variáveis e constantes: Foram usadas variáveis para armazenar valores que podem mudar durante a execução do programa, como frame_count, onscreen, dificuldade, running, angle, animation_i, etc. Também foram usadas para armazenar valores que não mudam, como x_screen, y_screen, START_TIME, etc.
+Tipos de dados: Foram utilizados diferentes tipos de dados para representar as informações do programa, como números inteiros (int), números reais (float), caracteres (char), listas (list), tuplas (tuple), objetos (object), etc.
+Funções: Foram usadas funções para agrupar trechos de código que realizam uma tarefa específica, como game_diff, remove_obj, init_game, init_sprites, draw_heart, dark_screen, finish, draw_finish, etc. Também foram usadas funções do próprio PyGmae, como pg.display.init, pg.font.init, pg.time.Clock, pg.transform.rotate, etc.
+Classes e objetos: Foram usadas classes para definir a estrutura e o comportamento de entidades do jogo, como Player, Button_Start, Button_Exit, Stopwatch, Points_Counter, Music, etc. Também foram usadas para criar instâncias dessas classes e acessar seus atributos e métodos, como crab_player, start, close, stopwatch, counter, music_game, etc.
+Estruturas de controle: Foram usadas estruturas de controle para determinar o fluxo de execução do  programa, como condicionais (if/elif/else) e laços (while/for). Por exemplo, um laço while foi usado para manter o jogo rodando até que o usuário saia ou perca todas as vidas, e condicionais foram utilizadas para verificar se o usuário clicou em algum botão ou se algum objeto colidiu com o caranguejo.
+Importação de módulos: Foi utilizada a palavra-chave import para importar módulos que contêm funções, classes e variáveis que aparecem no jogo, como pygame, functions, objects, sprite_sheet, button, time, counters, music1, etc.
+Herança: Herança é um mecanismo que permite que uma classe herde as propriedades e comportamentos de outra classe. No código, a classe Player herda da classe Sprite, o que significa que ela tem acesso a todas as propriedades e comportamentos da classe Sprite. Por exemplo, a classe Player herda da classe Sprite o método draw(), que foi usado para desenhar o jogador na tela.
+Polimorfismo: Polimorfismo é um mecanismo que permite que objetos de diferentes classes respondam ao mesmo método de maneiras diferentes. No código, o método update() foi usado para atualizar todos os objetos do jogo. No entanto, cada objeto de jogo responde ao método update() de uma maneira diferente, dependendo de seu tipo. Por exemplo, o objeto crab_player responde ao método update() movendo o jogador e verificando se ele colidiu com um objeto.
+Abstração: Abstração é um mecanismo que permite ocultar os detalhes de implementação de um objeto e expor apenas uma interface pública. No código, a classe Player abstrai os detalhes de implementação de como o jogador se move e verifica colisões. Isso permite que outros objetos do jogo interajam com o jogador sem precisar saber como ele funciona internamente. Por exemplo, o objeto Item pode interagir com o jogador chamando o método collide(), mesmo que ele não saiba como o jogador implementa esse método.
+
 ## Divisão de Trabalhos:
-A tomada de decisão no que se diz em relação à dinâmica do jogo, bem como a escolha do tema, da interface, da lógica do jogo, das regras,ideias, features, personagens e etc foi feita conjuntamente com participação ativa de todos os membros da equipe. Todos opinaram, votaram, tiveram suas escolhas levadas em consideração durante o processo idealizatorio e criativo.
+A tomada de decisão no que se diz em relação à dinâmica do jogo, bem como a escolha do tema, da interface, da lógica do jogo, das regras, ideias, features, personagens e etc foi feita conjuntamente com participação ativa de todos os membros da equipe. Todos opinaram, votaram, tiveram suas escolhas levadas em consideração durante o processo idealizatorio e criativo.
 
 Questões técnicas:
-
 
 - Artur Couto:
     Design do caranguejo;
