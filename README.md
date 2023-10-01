@@ -55,39 +55,6 @@ uma vida é descontada. O lixo só é coletado quando colide com o caranguejo.
 
 ## Ferramentas utilizadas:
 
-Módulos:
-
-Functions (from functions import ...):
-Propósito: Um módulo personalizado que contém várias funções de utilidade para o jogo, como game_diff, init_game, draw_heart e assim por diante.
-Justificativa: Separar funções utilitárias em um módulo distinto ajuda a manter o código principal limpo e organizado.
-
-
-objects (from objects import Player):
-Propósito: Um módulo personalizado que contém definições de objetos para o jogo. Aqui, a classe Player é importada.
-Justificativa: Isolar a lógica relacionada ao jogador em sua própria classe ajuda a modularizar e organizar o código.
-
-
-sprite_sheet (from sprite_sheet import sprites_player):
-Propósito: Um módulo personalizado para lidar com spritesheets ou conjuntos de sprites.
-Justificativa: Os spritesheets são uma maneira eficiente de gerenciar e usar várias imagens ou animações em jogos.
-
-
-button (from button import Button_Start, Button_Exit):
-Propósito: Módulo personalizado para lidar com botões na interface do jogo.
-Justificativa: Isolar a lógica dos botões em classes distintas torna mais fácil de gerenciar sua funcionalidade e aparência.
-
-
-
-counters (from counters import Stopwatch, Points_Counter):
-Propósito: Módulo personalizado que lida com a contagem e exibição de pontos e tempo.
-Justificativa: Manter contadores separados em suas próprias classes ajuda a organizar a lógica relacionada à pontuação e temporização.
-
-
-music1 (from music1 import Music):
-Propósito: Módulo personalizado que paree lida com a reprodução e controle de música e efeitos sonoros.
-Justificativa: Ter uma classe dedicada à música permite controlar facilmente a reprodução dos sons no jogo.
-
-
 Biblioteca:
 
 A biblioteca pygame foi empregada como a principal ferramenta para o desenvolvimento da interface gráfica e da dinâmica de um jogo. Através dela, a interface de exibição foi inicializada, permitindo a renderização de elementos gráficos como imagens de fundo, sprites e botões. Além disso, ela é usada para detectar e gerenciar eventos de interação do usuário, como pressionamentos de teclas e operações de fechamento de janelas do jogo. A biblioteca também monitora o tempo do jogo e usa um relógio que ajuda a determinar a taxa de atualização para garantir que o jogo seja executado em uma velocidade consistente.
