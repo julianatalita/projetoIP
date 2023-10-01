@@ -1,5 +1,5 @@
 import pygame as pg
-from functions import draw_counter, game_diff, remove_obj, init_game, init_sprites, collide, draw_heart
+from functions import draw_counter, game_diff, remove_obj, init_game, init_sprites, collide, draw_heart, dark_screen
 from objects import Player
 from sprite_sheet import sprites_player
 from button import Button_Start, Button_Exit
@@ -45,6 +45,7 @@ music_game.play(1.5)
 START_TIME = time()
 stopwatch = Stopwatch(START_TIME)
 
+esc = False
 while running:
 
     screen.blit(background_game, (0,0))
@@ -70,7 +71,8 @@ while running:
         item[1].update(screen, pg.transform.rotate(item[0], item[1].obj_angle))
     if len(removidos) > 0:
         if crab_player.lose_life() == 0:
-            running = False
+            #running = False
+            esc = True
 
 
     stopwatch.draw_stopwatch(screen, my_font, x_screen, clock_box)
@@ -78,6 +80,9 @@ while running:
     draw_counter(counter, screen, counter_box)
     draw_heart(heart, heart_lost, crab_player._lives,screen)
     
+    if esc:
+        dark_screen(screen, x_screen, y_screen)
+
     pg.display.update()
 
     for i in removidos:

@@ -97,6 +97,7 @@ def init_game():
 def init_sprites(screen, sprites_player):
 
   background_game = pg.image.load('graphics/swamp.png')
+  background_game = pg.transform.scale(background_game, screen.get_size())
   background_start = pg.image.load('graphics/Background.png')
   background_start = pg.transform.scale(background_start, screen.get_size())
 
@@ -127,4 +128,7 @@ def draw_heart(image_on, image_off, lives, screen):
       screen.blit(image_off, ((x_screen) * 9/10 - 68 + 40 * c, 75)) 
 
 
-  
+def dark_screen(surface, wid, height, alpha=150):
+    overlay = pg.Surface((wid, height), pg.SRCALPHA)
+    overlay.fill((0, 0, 0, alpha))
+    surface.blit(overlay, (0, 0))
