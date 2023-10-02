@@ -162,7 +162,7 @@ Pressione D para mover o caranguejo para a direita.
 - O jogador começa com um número limitado de vidas;
 - O jogo continua até que todas as vidas sejam perdidas;
 - Ganhe pontos coletando o lixo antes que ele passe pelo caranguejo;
-- Cada tipo de lixo coletado concede uma quantidade diferente de pontos;
+- Cada tipo de lixo é contabilizado em diferentes contadores;
 - Cada vez que o lixo passa direto pelo caranguejo (sem colisão), uma vida é descontada;
 - O objetivo é conseguir a maior pontuação possível antes de perder todas as vidas.
 
